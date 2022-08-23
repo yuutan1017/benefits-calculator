@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 export const Layout = ({ children }: any) => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center mx-5">
+    <div className="flex min-h-screen flex-auto flex-col items-center justify-center mx-7">
       <Head>
         <title>育児休業給付金　計算ツール</title>
       </Head>
