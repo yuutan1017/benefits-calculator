@@ -2,16 +2,23 @@ import React from 'react';
 
 export const Calculate = () => {
   return (
-    <div className='flex flex-col w-full my-auto'>
-      <h1 className="text-4xl font-bold">育児休業給付金　計算ツール</h1>
-
-      <div className="">
-        <p>開始月の前6ヶ月の給与の平均</p>
-        <p>総支給額 // 出勤予定日 * 欠勤日数 = 欠勤単価</p>
-        <p>総支給 - 欠勤単価 = 給与支給額</p>
-        <p></p>
-        <p></p>
+    <>
+      <div className="flex flex-col my-auto p-3">
+        <h1 className="text-2xl font-bold">育児休業給付金　計算ツール</h1>
+        <div className="grid grid-cols-2 mt-4">
+          <div className="p-3">
+            <input placeholder="金額" />
+            <input className="mt-2" placeholder="金額" />
+            <input className="mt-2" placeholder="金額" />
+            <input className="mt-2" placeholder="金額" />
+            <input className="mt-2" placeholder="金額" />
+            <input className="mt-2" placeholder="金額" />
+          </div>
+          <div className="flex justify-center items-center min-w-screen">
+            <p>result</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
