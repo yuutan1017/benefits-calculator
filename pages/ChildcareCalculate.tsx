@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Layout } from '../components/Layout';
 
-const ChildcareCalculate = () => {
+const childcareCalculate = () => {
   return (
     <Layout>
       Childcare
@@ -10,4 +10,4 @@ const ChildcareCalculate = () => {
   );
 };
 
-export default ChildcareCalculate;
+export default childcareCalculate;
