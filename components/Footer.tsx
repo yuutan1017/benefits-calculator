@@ -2,8 +2,27 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <footer className="flex h-10 w-full items-center justify-center border-t">
-      copyright@yutan1017
+    <footer className="w-full h-16 flex justify-center items-center">
+      <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-700 sm:mb-0">
+        <li>
+          <a href="#" className="mr-4 hover:underline md:mr-6 ">
+            About me
+          </a>
+        </li>
+        <li>
+          <a href="#" className="mr-4 hover:underline md:mr-6">
+            github
+          </a>
+        </li>
+        <li>
+          <a href="#" className="mr-6 hover:underline md:mr-6">
+            Contact
+          </a>
+        </li>
+        <li>
+          <p>copyright@yutan</p>
+        </li>
+      </ul>
     </footer>
   );
 };

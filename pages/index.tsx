@@ -1,8 +1,15 @@
 import type { NextPage } from 'next';
-import { HomePage } from './HomePage';
+
+import { Layout } from '../components/Layout';
+import { Links } from '../components/Links';
+import ChildcareCalculate from './ChildcareCalculate';
 
 const Home: NextPage = () => {
-  return <HomePage />;
+  return (
+    <Layout>
+      <Links />
+    </Layout>
+  );
 };
 
 export default Home;
