@@ -1,25 +1,33 @@
-import React, { useEffect, useState, useRef, RefObject } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import { Layout } from '../components/Layout';
 
 const AveCalculate = () => {
-  const [one, setOne] = useState<string>("");
-  const [two, setTwo] = useState<string>("");
-  const [three, setThree] = useState<string>("");
-  const [four, setFour] = useState<string>("");
-  const [five, setFive] = useState<string>("");
-  const [six, setSix] = useState<string>("");
+  const [one, setOne] = useState<string>('300000');
+  const [two, setTwo] = useState<string>('290000');
+  const [three, setThree] = useState<string>('314000');
+  const [four, setFour] = useState<string>('324000');
+  const [five, setFive] = useState<string>('285000');
+  const [six, setSix] = useState<string>('305000');
 
-  let data: number[] = [];
+  // const averageData: number[] = [];
+  // console.log(averageData);
+
   const handlePushCalculate = () => {
+    const data: number[] = [];
     data.push(parseInt(one));
     data.push(parseInt(two));
     data.push(parseInt(three));
     data.push(parseInt(four));
     data.push(parseInt(five));
     data.push(parseInt(six));
-    console.log(data);
+
+    const total = data.reduce((sum, ele) => sum + ele);
+    const average = Math.round(total / data.length);
+    // averageData.push(average);
+
+    return average;
   };
 
   return (
@@ -28,7 +36,7 @@ const AveCalculate = () => {
         <h1 className="text-xl font-bold">6ヶ月の平均給与</h1>
         <div className="w-11/12 my-2 bg-gray-200">
           <div className="mx-6 py-1">
-            <form className="mt-8">
+            <form className="mt-7">
               <input
                 type="number"
                 value={one}
@@ -74,13 +82,13 @@ const AveCalculate = () => {
               <button
                 type="button"
                 onClick={handlePushCalculate}
-                className="focus:outline-none text-white bg-green-700 hover:bg-green-800 font-normal rounded text-md px-5 py-3 mt-5 w-full"
+                className="focus:outline-none text-white bg-green-700 font-normal rounded text-md px-5 py-3 mt-5 w-full"
               >
                 平均値を計算する
               </button>
             </form>
             <div className="mt-5 p-2 bg-slate-500">
-              <p>dummy</p>
+              <p id='ans'>{ }</p>
             </div>
             <div className="mt-5 mb-3">
               <Link href="/">
