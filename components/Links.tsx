@@ -14,11 +14,6 @@ export const Links: FC = () => {
           AveCalculate
         </Link>
       </div>
-      <div>
-        <Link href="/aveCalculate_2">
-          AveCalculate_2
-        </Link>
-      </div>
     </>
   );
 };
