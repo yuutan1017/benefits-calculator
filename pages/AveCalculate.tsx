@@ -14,7 +14,6 @@ const aveCalculate = memo(() => {
     sixthInput: 0,
   });
 
-  const [total, setTotal] = useState<String>('');
   const [average, setAverage] = useState<String>('');
 
   const handleCalculate = () => {
@@ -22,8 +21,7 @@ const aveCalculate = memo(() => {
     for (let [key, value] of Object.entries(allState)) {
       localTotal += value;
     }
-    setTotal(String(localTotal));
-    setAverage(String((localTotal / 6)));
+    setAverage(String(Math.floor(localTotal / 6)));
   };
 
   return (
@@ -35,117 +33,115 @@ const aveCalculate = memo(() => {
           <h3>dammy</h3>
           <h4>dammy</h4>
         </section>
-        <section className="w-11/12 my-2 bg-gray-300 rounded-lg">
-          <div className="mx-6 pb-6">
-            <form className="mt-7">
-              <table className="w-full">
-                <tbody>
-                  <tr className="flex flex-col">
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 h-10">
-                      <input
-                        onChange={(e) =>
-                          setAllState({
-                            ...allState,
-                            firstInput: parseInt(e.target.value),
-                          })
-                        }
-                        type="number"
-                        className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
-                      />
-                      <span className="text-gray-900 text-md mx-1.5 pt-2">
-                        円
-                      </span>
-                    </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
-                      <input
-                        type="number"
-                        onChange={(e) =>
-                          setAllState({
-                            ...allState,
-                            secondInput: parseInt(e.target.value),
-                          })
-                        }
-                        className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
-                      />
-                      <span className="text-gray-900 text-md mx-1.5 pt-2">
-                        円
-                      </span>
-                    </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
-                      <input
-                        type="number"
-                        onChange={(e) =>
-                          setAllState({
-                            ...allState,
-                            thirdInput: parseInt(e.target.value),
-                          })
-                        }
-                        className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
-                      />
-                      <span className="text-gray-900 text-md mx-1.5 pt-2">
-                        円
-                      </span>
-                    </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
-                      <input
-                        type="number"
-                        onChange={(e) =>
-                          setAllState({
-                            ...allState,
-                            fourthInput: parseInt(e.target.value),
-                          })
-                        }
-                        className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
-                      />
-                      <span className="text-gray-900 text-md mx-1.5 pt-2">
-                        円
-                      </span>
-                    </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
-                      <input
-                        type="number"
-                        onChange={(e) =>
-                          setAllState({
-                            ...allState,
-                            fifthInput: parseInt(e.target.value),
-                          })
-                        }
-                        className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
-                      />
-                      <span className="text-gray-900 text-md mx-1.5 pt-2">
-                        円
-                      </span>
-                    </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
-                      <input
-                        type="number"
-                        onChange={(e) =>
-                          setAllState({
-                            ...allState,
-                            sixthInput: parseInt(e.target.value),
-                          })
-                        }
-                        className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
-                      />
-                      <span className="text-gray-900 text-md mx-1.5 pt-2">
-                        円
-                      </span>
-                    </td>
-                    <td>
-                      <button
-                        id="calculate"
-                        type="button"
-                        onClick={handleCalculate}
-                        className="focus:outline-none text-white bg-green-700 font-normal rounded text-md py-3 mt-4 w-full"
-                      >
-                        平均値を計算する
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
-          </div>
+        <section className="w-11/12 my-2 bg-gray-300 rounded-lg sm:w-96">
+          <form className="mt-7 mx-6 pb-6">
+            <table className="w-full">
+              <tbody>
+                <tr className="flex flex-col">
+                  <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 h-10">
+                    <input
+                      onChange={(e) =>
+                        setAllState({
+                          ...allState,
+                          firstInput: parseInt(e.target.value),
+                        })
+                      }
+                      type="number"
+                      className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
+                    />
+                    <span className="text-gray-900 text-md mx-1.5 pt-2">
+                      円
+                    </span>
+                  </td>
+                  <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
+                    <input
+                      type="number"
+                      onChange={(e) =>
+                        setAllState({
+                          ...allState,
+                          secondInput: parseInt(e.target.value),
+                        })
+                      }
+                      className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
+                    />
+                    <span className="text-gray-900 text-md mx-1.5 pt-2">
+                      円
+                    </span>
+                  </td>
+                  <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
+                    <input
+                      type="number"
+                      onChange={(e) =>
+                        setAllState({
+                          ...allState,
+                          thirdInput: parseInt(e.target.value),
+                        })
+                      }
+                      className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
+                    />
+                    <span className="text-gray-900 text-md mx-1.5 pt-2">
+                      円
+                    </span>
+                  </td>
+                  <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
+                    <input
+                      type="number"
+                      onChange={(e) =>
+                        setAllState({
+                          ...allState,
+                          fourthInput: parseInt(e.target.value),
+                        })
+                      }
+                      className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
+                    />
+                    <span className="text-gray-900 text-md mx-1.5 pt-2">
+                      円
+                    </span>
+                  </td>
+                  <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
+                    <input
+                      type="number"
+                      onChange={(e) =>
+                        setAllState({
+                          ...allState,
+                          fifthInput: parseInt(e.target.value),
+                        })
+                      }
+                      className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
+                    />
+                    <span className="text-gray-900 text-md mx-1.5 pt-2">
+                      円
+                    </span>
+                  </td>
+                  <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
+                    <input
+                      type="number"
+                      onChange={(e) =>
+                        setAllState({
+                          ...allState,
+                          sixthInput: parseInt(e.target.value),
+                        })
+                      }
+                      className=" text-gray-900 text-md focus:outline-none w-full pt-2 pl-2"
+                    />
+                    <span className="text-gray-900 text-md mx-1.5 pt-2">
+                      円
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      id="calculate"
+                      type="button"
+                      onClick={handleCalculate}
+                      className="focus:outline-none text-white bg-green-700 font-normal rounded text-md py-3 mt-4 w-full"
+                    >
+                      平均値を計算する
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
         </section>
         <section>
           <div className="flex flex-row mt-5 p-2 bg-gray-50 border-b-2 border-gray-600 w-72">
