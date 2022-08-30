@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import Link from 'next/link';
 
 import { Layout } from '../components/Layout';
 import { InputValue } from '../types/type';
 
-const aveCalculate = () => {
+const aveCalculate = memo(() => {
   const [allState, setAllState] = useState<InputValue>({
     firstInput: 0,
     secondInput: 0,
@@ -18,24 +18,30 @@ const aveCalculate = () => {
   const [average, setAverage] = useState<String>('');
 
   const handleCalculate = () => {
-    let total = 0;
+    let localTotal = 0;
     for (let [key, value] of Object.entries(allState)) {
-      total += value;
+      localTotal += value;
     }
-    setAverage(String(Math.floor(total / 6)));
+    setTotal(String(localTotal));
+    setAverage(String((localTotal / 6)));
   };
 
   return (
-    <article>
+    <>
       <Layout>
-        <h1 className="text-xl font-bold">6ヶ月の平均給与</h1>
-        <section className="w-11/12 my-2 bg-gray-200">
-          <div className="mx-6 py-1">
+        <section>
+          <h1 className="text-xl font-bold">6ヶ月の平均給与</h1>
+          <h2>dammy</h2>
+          <h3>dammy</h3>
+          <h4>dammy</h4>
+        </section>
+        <section className="w-11/12 my-2 bg-gray-300 rounded-lg">
+          <div className="mx-6 pb-6">
             <form className="mt-7">
               <table className="w-full">
                 <tbody>
                   <tr className="flex flex-col">
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-400 h-10">
+                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 h-10">
                       <input
                         onChange={(e) =>
                           setAllState({
@@ -50,7 +56,7 @@ const aveCalculate = () => {
                         円
                       </span>
                     </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-400 mt-4 h-10">
+                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
                       <input
                         type="number"
                         onChange={(e) =>
@@ -65,7 +71,7 @@ const aveCalculate = () => {
                         円
                       </span>
                     </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-400 mt-4 h-10">
+                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
                       <input
                         type="number"
                         onChange={(e) =>
@@ -80,7 +86,7 @@ const aveCalculate = () => {
                         円
                       </span>
                     </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-400 mt-4 h-10">
+                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
                       <input
                         type="number"
                         onChange={(e) =>
@@ -95,7 +101,7 @@ const aveCalculate = () => {
                         円
                       </span>
                     </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-400 mt-4 h-10">
+                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
                       <input
                         type="number"
                         onChange={(e) =>
@@ -110,7 +116,7 @@ const aveCalculate = () => {
                         円
                       </span>
                     </td>
-                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-400 mt-4 h-10">
+                    <td className="flex flex-row bg-gray-50 border-b-2 border-gray-500 mt-4 h-10">
                       <input
                         type="number"
                         onChange={(e) =>
@@ -125,44 +131,36 @@ const aveCalculate = () => {
                         円
                       </span>
                     </td>
+                    <td>
+                      <button
+                        id="calculate"
+                        type="button"
+                        onClick={handleCalculate}
+                        className="focus:outline-none text-white bg-green-700 font-normal rounded text-md py-3 mt-4 w-full"
+                      >
+                        平均値を計算する
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
-
-              <button
-                id="calculate"
-                type="button"
-                onClick={handleCalculate}
-                className="focus:outline-none text-white bg-green-700 font-normal rounded text-md px-5 py-3 mt-5 w-full"
-              >
-                平均値を計算する
-              </button>
             </form>
           </div>
         </section>
         <section>
-          <div className="flex flex-row mt-5 p-2 bg-gray-50 border-b-2 border-gray-600">
-            <p id="result" className="w-full">
-              {total}
-            </p>
+          <div className="flex flex-row mt-5 p-2 bg-gray-50 border-b-2 border-gray-600 w-72">
+            <p className="w-full">{average}</p>
             <span className="text-gray-900 text-md">円</span>
           </div>
-          <div className="flex flex-row mt-5 p-2 bg-gray-50 border-b-2 border-gray-600">
-            <p id="result" className="w-full">
-              {average}
-            </p>
-            <span className="text-gray-900 text-md">円</span>
-          </div>
-
-          <div className="mt-5 mb-3">
+          <div className="mt-3 mb-3">
             <Link href="/">
               <a>topに戻る</a>
             </Link>
           </div>
         </section>
       </Layout>
-    </article>
+    </>
   );
-};
+});
 
 export default aveCalculate;

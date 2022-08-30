@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <footer className="w-full h-12 flex justify-center items-center border-t-4 pt-4">
+    <footer className="w-full h-14 flex justify-center items-center border-t-4 pt-5">
       <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-700 sm:mb-0">
         <li>
           <a href="#" className="mr-4 hover:underline md:mr-6 ">
