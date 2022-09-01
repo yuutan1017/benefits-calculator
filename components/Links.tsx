@@ -5,12 +5,12 @@ export const Links: FC = () => {
   return (
     <>
       <div>
-        <Link href="/childcareCalculate">
+        <Link href="/ChildcareCalculate">
           Childcare
         </Link>
       </div>
       <div>
-        <Link href="/aveCalculate">
+        <Link href="/AveCalculate">
           AveCalculate
         </Link>
       </div>
