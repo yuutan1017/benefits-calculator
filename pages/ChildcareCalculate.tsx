@@ -1,17 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
+
 import { Layout } from '../components/Layout';
+import { today } from '../components/today';
 
 const ChildcareCalculate = () => {
+  const { year, month, day } = today();
   return (
     <>
       <Layout>
         <section>
-          <section className="mx-6">
-            <h1 className="text-xl font-bold">
+          <section className="mx-6 mt-10">
+            <h1 className="text-2xl font-bold">
               あなたの育児休業給付金、自動で計算します。
             </h1>
-            <div className="text-md text-left mt-8">
+            <div className="text-md text-left mt-10">
               <p>
                 労働者が子育てするために休業する場合、育児休業給付金が受け取れます。
               </p>
@@ -50,20 +53,31 @@ const ChildcareCalculate = () => {
           </section>
           <article className="flex flex-col py-4 mx-6 mt-6 bg-gray-200 border-t-2 border-indigo-300">
             <div className="flex flex-row justify-center">
-              <span>毎月の額面給与</span>
-              <input
-                className="border-b-2 border-gray-400 w-32 ml-2"
-                type="text"
-              />
-            </div>
-            <div className="flex flex-row justify-center mt-4">
               <span>開始日程</span>
               <input
                 type="date"
-                value="2022-05-13"
+                defaultValue={`${year}-${month}-${day}`}
                 required
                 className="border-b-2 border-gray-400 w-32 ml-2"
               />
+            </div>
+            <div className="flex flex-row justify-center mt-4">
+              <span>出産予定の子供の数</span>
+              <input
+                className="border-b-2 border-gray-400 w-9 ml-2 pl-1"
+                type="number"
+                required
+              />
+              <span className="pl-1">人</span>
+            </div>
+
+            <div className="flex flex-row justify-center mt-4">
+              <span>毎月の額面給与</span>
+              <input
+                className="border-b-2 border-gray-400 w-32 ml-2 pl-2"
+                type="number"
+              />
+              <span className="pl-1">円</span>
             </div>
           </article>
         </section>

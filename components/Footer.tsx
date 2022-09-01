@@ -6,12 +6,12 @@ export const Footer = () => {
       <ul className="flex flex-wrap items-center text-sm text-gray-700 sm:mb-0">
         <li>
           <a href="#" className="mr-4 hover:underline sm:mr-8 sm:text-lg">
-            About me
+            About Me
           </a>
         </li>
         <li>
           <a href="#" className="mr-4 hover:underline sm:mr-8 sm:text-lg">
-            github
+            Github
           </a>
         </li>
         <li>
