@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { Layout } from '../components/Layout';
 import { today } from '../components/today';
+import { setChildcareInput } from '../types/type';
 
 const ChildcareCalculate = () => {
   const { year, month, day } = today();
+  const [data, setData] = useState<setChildcareInput>({
+    date: `${year}-${month}-${day}`,
+    childCount: 1,
+    salary: 300000,
+  });
+  const [] = useState();
+
   return (
     <>
       <Layout>
@@ -56,16 +64,23 @@ const ChildcareCalculate = () => {
               <span>開始日程</span>
               <input
                 type="date"
-                defaultValue={`${year}-${month}-${day}`}
-                required
+                defaultValue={data.date}
                 className="border-b-2 border-gray-400 w-32 ml-2 outline-none"
+                onChange={(e) => {
+                  setData({ ...data, date: e.target.value });
+                }}
+                required
               />
             </div>
             <div className="flex flex-row justify-center mt-5">
               <span>出産予定の子供の数</span>
               <input
-                className="border-b-2 border-gray-400 w-9 ml-2 pl-1 outline-none"
                 type="number"
+                defaultValue={data.childCount}
+                className="border-b-2 border-gray-400 w-9 ml-2 pl-1 outline-none"
+                onChange={(e) => {
+                  setData({ ...data, childCount: parseInt(e.target.value) });
+                }}
                 required
               />
               <span className="pl-1">人</span>
@@ -73,15 +88,21 @@ const ChildcareCalculate = () => {
             <div className="flex flex-row justify-center mt-5">
               <span>毎月の額面給与</span>
               <input
-                className="border-b-2 border-gray-400 w-32 ml-2 pl-2 outline-none"
                 type="number"
+                defaultValue={data.salary}
+                className="border-b-2 border-gray-400 w-32 ml-2 pl-2 outline-none"
+                onChange={(e) => {
+                  setData({ ...data, salary: parseInt(e.target.value) });
+                }}
+                required
               />
               <span className="pl-1">円</span>
             </div>
             <div className="flex flex-row justify-center mt-5">
               <button
-                className="rounded w-40 bg-indigo-400 py-1 font-medium"
                 type="button"
+                className="rounded w-40 bg-indigo-500 py-1 font-medium text-white"
+                onClick={() => console.log(data)}
               >
                 計算する
               </button>

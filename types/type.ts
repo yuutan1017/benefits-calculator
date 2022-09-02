@@ -7,6 +7,12 @@ export interface InputValue {
   sixthInput: number;
 }
 
+export interface setChildcareInput {
+  date: string;
+  childCount: number;
+  salary: number;
+}
+
 export interface Inputs {
   example: string;
   exampleRequired: string;
