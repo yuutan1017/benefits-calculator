@@ -10,7 +10,7 @@ const ChildcareCalculate = () => {
     <>
       <Layout>
         <section>
-          <section className="mx-6 mt-10">
+          <article className="mx-6 mt-10">
             <h1 className="text-2xl font-bold">
               あなたの育児休業給付金、自動で計算します。
             </h1>
@@ -23,8 +23,8 @@ const ChildcareCalculate = () => {
                 <b>育児休業期間中は社会保険料などの納付が免除されます。</b>
               </p>
             </div>
-          </section>
-          <section className="mx-6 mt-5 text-left">
+          </article>
+          <section className="mx-6 mt-5 text-left border-t-2 border-indigo-400">
             <div className="text-md">
               <p className="mt-3">&lt;初月から6ヵ月まで&gt;</p>
               <p className="mt-1">
@@ -51,35 +51,42 @@ const ChildcareCalculate = () => {
               <p className="mt-1">※2：通常は30日</p>
             </div>
           </section>
-          <article className="flex flex-col py-4 mx-6 mt-6 bg-gray-200 border-t-2 border-indigo-300">
-            <div className="flex flex-row justify-center">
+          <form className="flex flex-col py-5 mx-6 mt-6 bg-gray-200 border-t-2 border-indigo-400">
+            <div className="flex flex-row justify-center mt-2">
               <span>開始日程</span>
               <input
                 type="date"
                 defaultValue={`${year}-${month}-${day}`}
                 required
-                className="border-b-2 border-gray-400 w-32 ml-2"
+                className="border-b-2 border-gray-400 w-32 ml-2 outline-none"
               />
             </div>
-            <div className="flex flex-row justify-center mt-4">
+            <div className="flex flex-row justify-center mt-5">
               <span>出産予定の子供の数</span>
               <input
-                className="border-b-2 border-gray-400 w-9 ml-2 pl-1"
+                className="border-b-2 border-gray-400 w-9 ml-2 pl-1 outline-none"
                 type="number"
                 required
               />
               <span className="pl-1">人</span>
             </div>
-
-            <div className="flex flex-row justify-center mt-4">
+            <div className="flex flex-row justify-center mt-5">
               <span>毎月の額面給与</span>
               <input
-                className="border-b-2 border-gray-400 w-32 ml-2 pl-2"
+                className="border-b-2 border-gray-400 w-32 ml-2 pl-2 outline-none"
                 type="number"
               />
               <span className="pl-1">円</span>
             </div>
-          </article>
+            <div className="flex flex-row justify-center mt-5">
+              <button
+                className="rounded w-40 bg-indigo-400 py-1 font-medium"
+                type="button"
+              >
+                計算する
+              </button>
+            </div>
+          </form>
         </section>
       </Layout>
     </>

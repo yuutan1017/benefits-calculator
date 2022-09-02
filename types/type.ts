@@ -6,3 +6,8 @@ export interface InputValue {
   fifthInput: number;
   sixthInput: number;
 }
+
+export interface Inputs {
+  example: string;
+  exampleRequired: string;
+}
