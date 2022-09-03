@@ -7,13 +7,15 @@ export interface InputValue {
   sixthInput: number;
 }
 
-export interface setChildcareInput {
+export interface setChildcareInputs {
   date: string;
   childCount: number;
-  salary: number;
+  grossIncome: number;
+  netIncome: number;
+  checkedOverSixM: boolean;
 }
 
-export interface Inputs {
+export interface contactInputs {
   example: string;
   exampleRequired: string;
 }
