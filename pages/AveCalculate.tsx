@@ -21,20 +21,20 @@ const aveCalculate = memo(() => {
     for (let [key, value] of Object.entries(allState)) {
       localTotal += value;
     }
-    setAverage(String(Math.floor(localTotal / 6)));
+    setAverage(String(Math.floor(localTotal / 180)));
   };
 
   return (
     <>
       <Layout>
-        <section>
-          <h1 className="text-xl font-bold">6ヶ月の平均給与</h1>
+        <section className="mt-8">
+          <h1 className="text-xl font-bold">休業開始時賃金を計算します。</h1>
           <h2>dammy</h2>
           <h3>dammy</h3>
           <h4>dammy</h4>
         </section>
-        <section className="w-11/12 my-2 bg-gray-300 rounded-lg sm:w-96">
-          <form className="mt-7 mx-6 pb-6">
+        <section className="w-10/12 mt-8 mb-2 bg-gray-300  sm:w-96 border-t-2 border-indigo-600">
+          <form className="mt-10 mx-8 pb-6">
             <table className="w-full">
               <tbody>
                 <tr className="flex flex-col">
@@ -133,10 +133,16 @@ const aveCalculate = memo(() => {
                       id="calculate"
                       type="button"
                       onClick={handleCalculate}
-                      className="focus:outline-none text-white bg-green-700 font-normal rounded text-md py-3 mt-4 w-full"
+                      className="focus:outline-none text-white bg-indigo-600 font-normal rounded text-md py-3 mt-4 w-full"
                     >
                       平均値を計算する
                     </button>
+                  </td>
+                  <td>
+                    <div className="flex flex-row mt-5 p-2 bg-gray-50 border-b-2 border-gray-600 ">
+                      <p className="w-full">{average}</p>
+                      <span className="text-gray-900 text-md">円</span>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -144,10 +150,6 @@ const aveCalculate = memo(() => {
           </form>
         </section>
         <section>
-          <div className="flex flex-row mt-5 p-2 bg-gray-50 border-b-2 border-gray-600 w-72">
-            <p className="w-full">{average}</p>
-            <span className="text-gray-900 text-md">円</span>
-          </div>
           <div className="mt-3 mb-3">
             <Link href="/">
               <a>topに戻る</a>

@@ -8,7 +8,9 @@ export interface InputValue {
 }
 
 export interface setChildcareInputs {
-  date: string;
+  startYear: string;
+  startMonth: string;
+  startDay: string;
   childCount: number;
   grossIncome: number;
   netIncome: number;

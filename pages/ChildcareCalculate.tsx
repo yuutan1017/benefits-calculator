@@ -6,20 +6,49 @@ import { today } from '../components/today';
 import { setChildcareInputs } from '../types/type';
 
 const ChildcareCalculate = () => {
-  const { year, month, day } = today();
+  let { year, month, day } = today();
   const [data, setData] = useState<setChildcareInputs>({
-    date: `${year}-${month}-${day}`,
+    startYear: year,
+    startMonth: month,
+    startDay: day,
     childCount: 1,
     grossIncome: 300000,
     netIncome: 230000,
     checkedOverSixM: false,
   });
+  // ↓ stateで管理して更新されたら表示が切り替わるようにプログラム
+  let endYear = parseInt(data.startYear);
+  let endMonth = parseInt(data.startMonth);
+  let endDay = parseInt(data.startDay);
+
+  const dateSprit = (e: any) => {
+    setData({
+      ...data,
+      startYear: e.target.value.split('-')[0],
+      startMonth: e.target.value.split('-')[1],
+      startDay: e.target.value.split('-')[2],
+    });
+  };
+
   const onChangeCheckBox = () => {
     data.checkedOverSixM = !data.checkedOverSixM;
   };
 
-  const setChildcareCal = () => {
+  const judgeOverSixMonth = () => {
+    if (endMonth > 12) {
+      endMonth -= 6;
+      endYear += 1;
+    } else {
+      endMonth += 6;
+    }
+  };
+
+  const calculateDailyWage = () => {
+    // const sixtySeven = Math.floor((data.grossIncome / 100) * 67);
+    // const fifty = Math.floor((data.grossIncome / 100) * 50);
+    judgeOverSixMonth();
     console.log(data);
+    console.log(endYear, endMonth, endDay);
   };
 
   return (
@@ -40,7 +69,7 @@ const ChildcareCalculate = () => {
               </p>
             </div>
           </article>
-          <section className="mx-6 mt-5 text-left border-t-2 border-indigo-400">
+          <section className="mx-6 mt-5 text-left border-t-2 border-indigo-600">
             <div className="text-md">
               <p className="mt-3">&lt;初月から6ヶ月まで&gt;</p>
               <p className="mt-1">
@@ -68,22 +97,22 @@ const ChildcareCalculate = () => {
             </div>
           </section>
           <section className="flex flex-col mx-6">
-            <form className="py-5 mt-6 bg-gray-300 border-t-2 border-indigo-400">
+            <form className="py-5 mt-6 bg-gray-300 border-t-2 border-indigo-600">
               <div className="flex flex-row justify-center mt-2">
-                <span>開始日程</span>
+                <label htmlFor="startDate">開始日程</label>
                 <input
+                  id="startDate"
                   type="date"
-                  defaultValue={data.date}
+                  defaultValue={`${data.startYear}-${data.startMonth}-${data.startDay}`}
                   className="border-b-2 border-gray-400 w-32 ml-2 outline-none"
-                  onChange={(e) => {
-                    setData({ ...data, date: e.target.value });
-                  }}
+                  onChange={dateSprit}
                   required
                 />
               </div>
               <div className="flex flex-row justify-center mt-4">
-                <span>出産予定の子供の数</span>
+                <label htmlFor="childCount">出産予定の子供の数</label>
                 <input
+                  id="childCount"
                   type="number"
                   defaultValue={data.childCount}
                   className="border-b-2 border-gray-400 w-9 ml-2 pl-1 outline-none"
@@ -95,8 +124,9 @@ const ChildcareCalculate = () => {
                 <span className="pl-1">人</span>
               </div>
               <div className="flex flex-row justify-center mt-4">
-                <span>毎月の額面給与</span>
+                <label htmlFor="grossIncome">毎月の額面給与</label>
                 <input
+                  id="grossIncome"
                   type="number"
                   defaultValue={data.grossIncome}
                   className="border-b-2 border-gray-400 w-32 ml-2 pl-2 outline-none"
@@ -108,8 +138,9 @@ const ChildcareCalculate = () => {
                 <span className="pl-1">円</span>
               </div>
               <div className="flex flex-row justify-center mt-4">
-                <span>毎月の手取り額</span>
+                <label htmlFor="netIncome">毎月の手取り額</label>
                 <input
+                  id="netIncome"
                   type="number"
                   defaultValue={data.netIncome}
                   className="border-b-2 border-gray-400 w-32 ml-2 pl-2 outline-none"
@@ -132,8 +163,8 @@ const ChildcareCalculate = () => {
               <div className="flex flex-row justify-center mt-8">
                 <button
                   type="button"
-                  className="rounded w-40 bg-indigo-500 py-1 font-light text-white"
-                  onClick={setChildcareCal}
+                  className="rounded w-40 bg-indigo-600 py-1 font-light text-white"
+                  onClick={calculateDailyWage}
                 >
                   計算する
                 </button>
@@ -143,7 +174,7 @@ const ChildcareCalculate = () => {
               <table className="my-10 bg-gray-100 border-gray-300 text-sm">
                 <thead className="bg-slate-400 border-b border-indigo-400">
                   <tr>
-                    <th className="py-2 border border-gray-500">年月</th>
+                    <th className="py-2 border border-gray-500">終了年月</th>
                     <th className="py-2 border border-gray-500">
                       毎月の支給額
                     </th>
@@ -152,15 +183,15 @@ const ChildcareCalculate = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <th className="py-2 border border-gray-400">2022/10/17</th>
+                    <th className="py-2 border border-gray-400">{`${endYear}/${endMonth}/${endDay}`}</th>
                     <th className="py-2 border border-gray-400">402000</th>
                     <th className="py-2 border border-gray-400">240000</th>
                   </tr>
-                  <tr>
-                    <th className="py-2 border border-gray-400">2022/10/17</th>
+                  {/* <tr>
+                    <th className="py-2 border border-gray-400">{`${year}-${variableMonth}-${day}`}</th>
                     <th className="py-2 border border-gray-400">402000</th>
                     <th className="py-2 border border-gray-400">240000</th>
-                  </tr>
+                  </tr> */}
                 </tbody>
               </table>
             </div>
