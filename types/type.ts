@@ -17,6 +17,12 @@ export interface setChildcareInputs {
   checkedOverSixM: boolean;
 }
 
+export interface setEndDate {
+  endYear: number;
+  endMonth: number;
+  endDay: number;
+}
+
 export interface contactInputs {
   example: string;
   exampleRequired: string;

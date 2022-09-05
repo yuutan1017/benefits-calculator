@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Layout } from '../components/Layout';
 import { today } from '../components/today';
 import { setChildcareInputs } from '../types/type';
+import { setEndDate } from '../types/type';
 
 const ChildcareCalculate = () => {
   let { year, month, day } = today();
@@ -16,17 +17,23 @@ const ChildcareCalculate = () => {
     netIncome: 230000,
     checkedOverSixM: false,
   });
-  // ↓ stateで管理して更新されたら表示が切り替わるようにプログラム
-  let endYear = parseInt(data.startYear);
-  let endMonth = parseInt(data.startMonth);
-  let endDay = parseInt(data.startDay);
 
-  const dateSprit = (e: any) => {
+  const [endData, setEndDate] = useState({ year: 0, month: 0, day: 0 });
+
+  const judgeOverSixMonth = () => {};
+
+  const dateSprit = async (e: any) => {
     setData({
       ...data,
       startYear: e.target.value.split('-')[0],
       startMonth: e.target.value.split('-')[1],
       startDay: e.target.value.split('-')[2],
+    });
+    setEndDate({
+      ...endData,
+      year: parseInt(data.startYear),
+      month: parseInt(data.startMonth),
+      day: parseInt(data.startDay),
     });
   };
 
@@ -34,21 +41,10 @@ const ChildcareCalculate = () => {
     data.checkedOverSixM = !data.checkedOverSixM;
   };
 
-  const judgeOverSixMonth = () => {
-    if (endMonth > 12) {
-      endMonth -= 6;
-      endYear += 1;
-    } else {
-      endMonth += 6;
-    }
-  };
-
+  //この段階でdataの値は変更されている。
   const calculateDailyWage = () => {
-    // const sixtySeven = Math.floor((data.grossIncome / 100) * 67);
-    // const fifty = Math.floor((data.grossIncome / 100) * 50);
-    judgeOverSixMonth();
     console.log(data);
-    console.log(endYear, endMonth, endDay);
+    console.log(endData);
   };
 
   return (
@@ -183,7 +179,7 @@ const ChildcareCalculate = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <th className="py-2 border border-gray-400">{`${endYear}/${endMonth}/${endDay}`}</th>
+                    <th className="py-2 border border-gray-400">{`${endData.year}/${endData.month}/${endData.day}`}</th>
                     <th className="py-2 border border-gray-400">402000</th>
                     <th className="py-2 border border-gray-400">240000</th>
                   </tr>
