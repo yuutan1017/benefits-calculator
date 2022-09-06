@@ -19,18 +19,23 @@ export const InitialSentence = () => {
         </div>
       </article>
       <section className="mx-4 mt-5 text-left border-t-2 border-indigo-600">
+        <h2 className='mt-2'>計算方法について</h2>
         <div className="text-sm">
-          <p className="mt-3">&lt;初月から6ヶ月まで&gt;</p>
+          <p className="mt-1">&lt;初月から6ヶ月まで&gt;</p>
           <p className="mt-1">
             ・育児休業開始から180日
             <br />
-            （休業開始時賃金日額<sup>※1</sup> ×支給日数<sup>※2</sup>）× 67%
+            <div className="font-bold">
+              （休業開始時賃金日額<sup>※1</sup> ×支給日数<sup>※2</sup>）× 67%
+            </div>
           </p>
           <p className="mt-1">&lt;6ヶ月以降&gt;</p>
           <p className="mt-1">
             ・育児休業開始から181日目以降
             <br />
-            （休業開始時賃金日額<sup>※1</sup> ×支給日数<sup>※2</sup>）× 50%
+            <div className="font-bold">
+              （休業開始時賃金日額<sup>※1</sup> ×支給日数<sup>※2</sup>）× 50%
+            </div>
           </p>
         </div>
         <div className="mt-3 text-stone-400 text-xs">

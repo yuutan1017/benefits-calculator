@@ -149,11 +149,11 @@ const ChildcareCalculate = () => {
             >
               <div className="text-sm flex flex-row my-5">
                 <div className="flex flex-row items-end">
-                  <p className="">育休中に月々もらえる金額は</p>
-                  <p className="text-3xl">
+                  <p className="mr-2">月々もらえる金額は</p>
+                  <p className="text-2xl">
                     {((data.grossIncome / 100) * 67).toLocaleString()}円
                   </p>
-                  <p className="">です。</p>
+                  <p className="ml-2">です。</p>
                 </div>
               </div>
               <table className="bg-gray-100 border-gray-300 text-sm">
