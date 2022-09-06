@@ -22,18 +22,18 @@ export const InitialSentence = () => {
         <div className="text-sm">
           <p className="mt-3">&lt;初月から6ヶ月まで&gt;</p>
           <p className="mt-1">
-            ・育児休業開始から180日：（休業開始時賃金日額<sup>※1</sup> ×
-            支給日数
-            <sup>※2</sup>）× 67%
+            ・育児休業開始から180日
+            <br />
+            （休業開始時賃金日額<sup>※1</sup> ×支給日数<sup>※2</sup>）× 67%
           </p>
           <p className="mt-1">&lt;6ヶ月以降&gt;</p>
           <p className="mt-1">
-            ・育児休業開始から181日目以降：（休業開始時賃金日額<sup>※1</sup> ×
-            支給日数
-            <sup>※2</sup>）× 50%
+            ・育児休業開始から181日目以降
+            <br />
+            （休業開始時賃金日額<sup>※1</sup> ×支給日数<sup>※2</sup>）× 50%
           </p>
         </div>
-        <div className="mt-3 text-stone-400 text-sm">
+        <div className="mt-3 text-stone-400 text-xs">
           <p>
             ※1：育児休業開始前（産休を取った場合は産休開始前）6ヶ月間の賃金を180で割った額
           </p>
@@ -48,4 +48,3 @@ export const InitialSentence = () => {
     </>
   );
 };
-
