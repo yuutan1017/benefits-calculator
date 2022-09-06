@@ -18,9 +18,9 @@ export interface setChildcareInputs {
 }
 
 export interface setEndDate {
-  endYear: number;
-  endMonth: number;
-  endDay: number;
+  year: string;
+  month: string;
+  day: string;
 }
 
 export interface contactInputs {

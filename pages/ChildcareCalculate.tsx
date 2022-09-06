@@ -18,40 +18,59 @@ const ChildcareCalculate = () => {
     checkedOverSixM: false,
   });
 
-  const [endData, setEndDate] = useState({ year: 0, month: 0, day: 0 });
+  const [endData, setEndDate] = useState<setEndDate>({
+    year: '',
+    month: '',
+    day: '',
+  });
 
-  const judgeOverSixMonth = () => {};
+  const judgeOverSixMonth = () => {
+    const dt = new Date(
+      parseInt(data.startYear),
+      parseInt(data.startMonth),
+      parseInt(data.startDay)
+    );
+    let year = dt.getFullYear();
+    let month = dt.getMonth();
+    let day = dt.getDate();
+    if (month > 6) {
+      month -= 6;
+      year += 1;
+    } else {
+      month += 6;
+    }
+    setEndDate({
+      ...endData,
+      year: String(year),
+      month: ('00' + month).slice(-2),
+      day: ('00' + day).slice(-2),
+    });
+  };
 
-  const dateSprit = async (e: any) => {
+  const dateSprit = (e: any) => {
     setData({
       ...data,
       startYear: e.target.value.split('-')[0],
       startMonth: e.target.value.split('-')[1],
       startDay: e.target.value.split('-')[2],
     });
-    setEndDate({
-      ...endData,
-      year: parseInt(data.startYear),
-      month: parseInt(data.startMonth),
-      day: parseInt(data.startDay),
-    });
   };
 
   const onChangeCheckBox = () => {
     data.checkedOverSixM = !data.checkedOverSixM;
   };
+  const [visible, setVisible] = useState<boolean>(false);
 
-  //この段階でdataの値は変更されている。
   const calculateDailyWage = () => {
-    console.log(data);
-    console.log(endData);
+    if (!visible) setVisible(!visible);
+    judgeOverSixMonth();
   };
 
   return (
     <>
       <Layout>
         <section>
-          <article className="mx-6 mt-10">
+          <article className="mx-4 mt-10">
             <h1 className="text-2xl font-bold">
               あなたの育児休業給付金、自動で計算します。
             </h1>
@@ -65,7 +84,7 @@ const ChildcareCalculate = () => {
               </p>
             </div>
           </article>
-          <section className="mx-6 mt-5 text-left border-t-2 border-indigo-600">
+          <section className="mx-4 mt-5 text-left border-t-2 border-indigo-600">
             <div className="text-md">
               <p className="mt-3">&lt;初月から6ヶ月まで&gt;</p>
               <p className="mt-1">
@@ -92,7 +111,7 @@ const ChildcareCalculate = () => {
               <p className="mt-1">※2：通常は30日</p>
             </div>
           </section>
-          <section className="flex flex-col mx-6">
+          <section className="flex flex-col mx-4">
             <form className="py-5 mt-6 bg-gray-300 border-t-2 border-indigo-600">
               <div className="flex flex-row justify-center mt-2">
                 <label htmlFor="startDate">開始日程</label>
@@ -166,28 +185,39 @@ const ChildcareCalculate = () => {
                 </button>
               </div>
             </form>
-            <div className="flex flex-col justify-center">
+
+            <div
+              className={`flex flex-col justify-center ${
+                visible ? 'visible' : 'hidden'
+              }`}
+            >
               <table className="my-10 bg-gray-100 border-gray-300 text-sm">
                 <thead className="bg-slate-400 border-b border-indigo-400">
                   <tr>
-                    <th className="py-2 border border-gray-500">終了年月</th>
-                    <th className="py-2 border border-gray-500">
+                    <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
+                      終了年月
+                    </th>
+                    <th className="py-2 border border-gray-500 text-xs">
                       毎月の支給額
                     </th>
-                    <th className="py-2 border border-gray-500">手取り額</th>
+                    <th className="py-2 border border-gray-500 text-xs">
+                      合計の支給額
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th className="py-2 border border-gray-400">{`${endData.year}/${endData.month}/${endData.day}`}</th>
                     <th className="py-2 border border-gray-400">402000</th>
-                    <th className="py-2 border border-gray-400">240000</th>
-                  </tr>
-                  {/* <tr>
-                    <th className="py-2 border border-gray-400">{`${year}-${variableMonth}-${day}`}</th>
                     <th className="py-2 border border-gray-400">402000</th>
-                    <th className="py-2 border border-gray-400">240000</th>
-                  </tr> */}
+                  </tr>
+                  <tr>
+                    <th className="py-2 border border-gray-400">{`${
+                      parseInt(data.startYear) + 1
+                    }/${data.startMonth}/${data.startDay}`}</th>
+                    <th className="py-2 border border-gray-400">402000</th>
+                    <th className="py-2 border border-gray-400">402000</th>
+                  </tr>
                 </tbody>
               </table>
             </div>
