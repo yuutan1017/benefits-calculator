@@ -72,7 +72,7 @@ const ChildcareCalculate = () => {
           <InitialSentence />
 
           <section className="flex flex-col mx-4">
-            <form className="py-5 mt-6 bg-gray-300 border-t-2 border-indigo-600">
+            <form className="py-5 mt-6 bg-gray-300 border-t-2 border-[#39497C]">
               <div className="flex flex-row justify-center mt-2">
                 <label htmlFor="startDate">開始日程</label>
                 <input
@@ -134,7 +134,7 @@ const ChildcareCalculate = () => {
               <div className="flex flex-row justify-center mt-8">
                 <button
                   type="button"
-                  className="rounded w-40 bg-indigo-600 py-1 font-light text-white"
+                  className="rounded w-40 bg-[#39497C] py-1 font-light text-white"
                   onClick={calculateDailyWage}
                 >
                   計算する
@@ -145,7 +145,7 @@ const ChildcareCalculate = () => {
             <div
               className={`flex flex-col justify-center mt-8 mb-10 ${
                 visible ? 'visible' : 'hidden'
-              } border-t-2 border-indigo-600`}
+              } border-t-2 border-[#39497C]`}
             >
               <div className="text-sm flex flex-row my-5">
                 <div className="flex flex-row items-end">
@@ -157,7 +157,7 @@ const ChildcareCalculate = () => {
                 </div>
               </div>
               <table className="bg-gray-100 border-gray-300 text-sm">
-                <thead className="bg-slate-400 border-b border-indigo-400">
+                <thead className="bg-slate-400 border-b border-[#39497C]">
                   <tr>
                     <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
                       終了年月

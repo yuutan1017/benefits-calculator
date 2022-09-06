@@ -33,8 +33,11 @@ export const InitialSentence = () => {
           </div>
         </div>
       </article>
-      <section className="mx-4 mt-5 text-left border-t-2 border-indigo-600">
-        <h2 className="mt-4 text-xl">計算方法について</h2>
+      <section className="mx-4 mt-5 text-left border-t-2 border-[#39497C]">
+        <div className="flex flex-row">
+          <span className='font-bold text-xl text-end mr-2 mt-4 text-yellow-500'>|</span>
+          <h2 className="mt-4 text-xl">計算方法について</h2>
+        </div>
         <div className="text-sm">
           <p className="mt-3">&lt;初月から6ヶ月まで&gt;</p>
           <p className="mt-1">
@@ -63,6 +66,10 @@ export const InitialSentence = () => {
             </p>
           </Link> */}
           <p className="mt-1">※2：通常は30日</p>
+        </div>
+        <div className="flex flex-row">
+          <span className='font-bold text-xl text-end mr-2 mt-4 text-yellow-500'>|</span>
+          <h2 className="mt-4 text-xl">育休中の就労について</h2>
         </div>
       </section>
     </>
