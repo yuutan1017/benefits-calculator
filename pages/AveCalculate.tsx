@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Layout } from '../components/Layout';
 import { InputValue } from '../types/type';
 
-const aveCalculate = memo(() => {
+const AveCalculate = () => {
   const [allState, setAllState] = useState<InputValue>({
     firstInput: 0,
     secondInput: 0,
@@ -159,6 +159,6 @@ const aveCalculate = memo(() => {
       </Layout>
     </>
   );
-});
+};
 
-export default aveCalculate;
+export default AveCalculate;
