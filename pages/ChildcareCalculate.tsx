@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 
 import { Layout } from '../components/Layout';
 import { today } from '../components/today';
+import { InitialSentence } from '../components/InitialSentence';
 import { setChildcareInputs } from '../types/type';
 import { setEndDate } from '../types/type';
 
@@ -15,14 +15,18 @@ const ChildcareCalculate = () => {
     childCount: 1,
     grossIncome: 300000,
     netIncome: 230000,
-    checkedOverSixM: false,
+    checkedOverSixMonth: false,
   });
-
   const [endData, setEndDate] = useState<setEndDate>({
     year: '',
     month: '',
     day: '',
   });
+  const [visible, setVisible] = useState<boolean>(false);
+  
+  const onChangeCheckBox = () => {
+    data.checkedOverSixMonth = !data.checkedOverSixMonth;
+  };
 
   const judgeOverSixMonth = () => {
     const dt = new Date(
@@ -56,11 +60,6 @@ const ChildcareCalculate = () => {
     });
   };
 
-  const onChangeCheckBox = () => {
-    data.checkedOverSixM = !data.checkedOverSixM;
-  };
-  const [visible, setVisible] = useState<boolean>(false);
-
   const calculateDailyWage = () => {
     if (!visible) setVisible(!visible);
     judgeOverSixMonth();
@@ -70,47 +69,8 @@ const ChildcareCalculate = () => {
     <>
       <Layout>
         <section>
-          <article className="mx-4 mt-10">
-            <h1 className="text-2xl font-bold">
-              あなたの育児休業給付金、自動で計算します。
-            </h1>
-            <div className="text-md text-left mt-10">
-              <p>
-                労働者が子育てするために休業する場合、育児休業給付金が受け取れます。
-              </p>
-              <p>
-                また、
-                <b>育児休業期間中は社会保険料などの納付が免除されます。</b>
-              </p>
-            </div>
-          </article>
-          <section className="mx-4 mt-5 text-left border-t-2 border-indigo-600">
-            <div className="text-md">
-              <p className="mt-3">&lt;初月から6ヶ月まで&gt;</p>
-              <p className="mt-1">
-                ・育児休業開始から180日：（休業開始時賃金日額<sup>※1</sup> ×
-                支給日数
-                <sup>※2</sup>）× 67%
-              </p>
-              <p className="mt-1">&lt;6ヶ月以降&gt;</p>
-              <p className="mt-1">
-                ・育児休業開始から181日目以降：（休業開始時賃金日額<sup>※1</sup>{' '}
-                × 支給日数
-                <sup>※2</sup>）× 50%
-              </p>
-            </div>
-            <div className="mt-3 text-stone-400 text-sm">
-              <p>
-                ※1：育児休業開始前（産休を取った場合は産休開始前）6ヶ月間の賃金を180で割った額
-              </p>
-              <Link href="/AveCalculate">
-                <p className="w-52 hover:font-bold hover:text-gray-900 hover:cursor-pointer">
-                  －－&gt;平均賃金の計算はこちらから
-                </p>
-              </Link>
-              <p className="mt-1">※2：通常は30日</p>
-            </div>
-          </section>
+          <InitialSentence />
+
           <section className="flex flex-col mx-4">
             <form className="py-5 mt-6 bg-gray-300 border-t-2 border-indigo-600">
               <div className="flex flex-row justify-center mt-2">
@@ -121,7 +81,6 @@ const ChildcareCalculate = () => {
                   defaultValue={`${data.startYear}-${data.startMonth}-${data.startDay}`}
                   className="border-b-2 border-gray-400 w-32 ml-2 outline-none"
                   onChange={dateSprit}
-                  required
                 />
               </div>
               <div className="flex flex-row justify-center mt-4">
@@ -134,7 +93,6 @@ const ChildcareCalculate = () => {
                   onChange={(e) => {
                     setData({ ...data, childCount: parseInt(e.target.value) });
                   }}
-                  required
                 />
                 <span className="pl-1">人</span>
               </div>
@@ -148,7 +106,6 @@ const ChildcareCalculate = () => {
                   onChange={(e) => {
                     setData({ ...data, grossIncome: parseInt(e.target.value) });
                   }}
-                  required
                 />
                 <span className="pl-1">円</span>
               </div>
@@ -162,7 +119,6 @@ const ChildcareCalculate = () => {
                   onChange={(e) => {
                     setData({ ...data, netIncome: parseInt(e.target.value) });
                   }}
-                  required
                 />
                 <span className="pl-1">円</span>
               </div>
@@ -187,11 +143,20 @@ const ChildcareCalculate = () => {
             </form>
 
             <div
-              className={`flex flex-col justify-center ${
+              className={`flex flex-col justify-center mt-8 mb-10 ${
                 visible ? 'visible' : 'hidden'
-              }`}
+              } border-t-2 border-indigo-600`}
             >
-              <table className="my-10 bg-gray-100 border-gray-300 text-sm">
+              <div className="text-sm flex flex-row my-5">
+                <div className="flex flex-row items-end">
+                  <p className="">育休中に月々もらえる金額は</p>
+                  <p className="text-3xl">
+                    {((data.grossIncome / 100) * 67).toLocaleString()}円
+                  </p>
+                  <p className="">です。</p>
+                </div>
+              </div>
+              <table className="bg-gray-100 border-gray-300 text-sm">
                 <thead className="bg-slate-400 border-b border-indigo-400">
                   <tr>
                     <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
@@ -208,13 +173,6 @@ const ChildcareCalculate = () => {
                 <tbody>
                   <tr>
                     <th className="py-2 border border-gray-400">{`${endData.year}/${endData.month}/${endData.day}`}</th>
-                    <th className="py-2 border border-gray-400">402000</th>
-                    <th className="py-2 border border-gray-400">402000</th>
-                  </tr>
-                  <tr>
-                    <th className="py-2 border border-gray-400">{`${
-                      parseInt(data.startYear) + 1
-                    }/${data.startMonth}/${data.startDay}`}</th>
                     <th className="py-2 border border-gray-400">402000</th>
                     <th className="py-2 border border-gray-400">402000</th>
                   </tr>

@@ -14,7 +14,7 @@ export interface setChildcareInputs {
   childCount: number;
   grossIncome: number;
   netIncome: number;
-  checkedOverSixM: boolean;
+  checkedOverSixMonth: boolean;
 }
 
 export interface setEndDate {
