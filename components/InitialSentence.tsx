@@ -42,7 +42,7 @@ export const InitialSentence = () => {
             <h2 className="mt-4 text-xl">計算方法について</h2>
           </div>
           <div className="text-sm">
-            <p className="mt-3">&lt;初月から6ヶ月まで&gt;</p>
+            <p className="mt-5">&lt;初月から6ヶ月まで&gt;</p>
             <div className="mt-1">
               ・育児休業開始から180日
               <br />
@@ -50,7 +50,7 @@ export const InitialSentence = () => {
                 （休業開始時賃金日額<sup>※1</sup> ×支給日数<sup>※2</sup>）× 67%
               </p>
             </div>
-            <p className="mt-1">&lt;6ヶ月以降&gt;</p>
+            <p className="mt-3">&lt;6ヶ月以降&gt;</p>
             <div className="mt-1">
               ・育児休業開始から181日目以降
               <br />
@@ -66,11 +66,36 @@ export const InitialSentence = () => {
             <p className="mt-1">※2：通常は30日</p>
           </div>
         </section>
-        <section className="flex flex-row">
-          <span className="font-bold text-xl text-center mr-2 mt-4 text-yellow-500">
-            ||
-          </span>
-          <h2 className="mt-4 text-xl">育休中の就労について</h2>
+        <section>
+          <div className="flex flex-row mt-10">
+            <span className="font-bold text-xl text-center mr-2 text-yellow-500">
+              ||
+            </span>
+            <h2 className="text-xl">育休中の就労について</h2>
+          </div>
+          <div className="text-sm mt-8">
+            <p>
+              ・<b>月10日以内かつ80時間以内での勤務</b>
+            </p>
+            <p className="mt-4">
+              であれば支給されますが、収入額によっては次のような支給の調整が行われます。　
+            </p>
+            <p className="mt-8">&lt;支給額の調整パターン&gt;</p>
+            <div className="border-4 border-yellow-500 p-5 mt-3">
+              <p className="p-1">・満額支給</p>
+              <p className="ml-5 text-gray-600">
+                ⇒給与額が、賃金月額の１３％（または３０％）まで
+              </p>
+              <p className="p-1 mt-2">・支給額の調整</p>
+              <p className="ml-5 text-gray-600">
+                ⇒給与額が、賃金月額の１３％（または３０％）超え、８０％未満
+              </p>
+              <p className="p-1 mt-2">・支給停止</p>
+              <p className="ml-5 text-gray-600">
+                ⇒給与額が、賃金月額の８０％を超える場合
+              </p>
+            </div>
+          </div>
         </section>
       </section>
     </>

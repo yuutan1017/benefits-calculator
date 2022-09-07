@@ -71,7 +71,7 @@ const ChildcareCalculate = () => {
         <section>
           <InitialSentence />
 
-          <section className="flex flex-col mx-4">
+          <section className="flex flex-col mx-4 mt-8">
             <form className="py-5 mt-6 bg-gray-300 border-t-2 border-[#39497C]">
               <div className="flex flex-row justify-center mt-2">
                 <label htmlFor="startDate">開始日程</label>

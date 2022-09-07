@@ -21,6 +21,7 @@ const AveCalculate = () => {
     for (let [key, value] of Object.entries(allState)) {
       localTotal += value;
     }
+    console.log(localTotal);
     setAverage(String(Math.floor(localTotal / 180)));
   };
 
