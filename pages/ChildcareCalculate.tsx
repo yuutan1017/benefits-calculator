@@ -23,7 +23,7 @@ const ChildcareCalculate = () => {
     day: '',
   });
   const [visible, setVisible] = useState<boolean>(false);
-  
+
   const onChangeCheckBox = () => {
     data.checkedOverSixMonth = !data.checkedOverSixMonth;
   };
@@ -134,14 +134,13 @@ const ChildcareCalculate = () => {
               <div className="flex flex-row justify-center mt-8">
                 <button
                   type="button"
-                  className="rounded w-40 bg-[#39497C] py-1 font-light text-white"
+                  className="rounded w-40 bg-[#39497C] py-1 font-light text-white outline-none"
                   onClick={calculateDailyWage}
                 >
                   計算する
                 </button>
               </div>
             </form>
-
             <div
               className={`flex flex-col justify-center mt-8 mb-10 ${
                 visible ? 'visible' : 'hidden'
