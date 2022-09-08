@@ -86,7 +86,7 @@ export const CalculateSentence = () => {
               <p>なお、収入額によっては次のような支給の調整が行われます。</p>
             </div>
 
-            <p className="mt-10">&lt;支給額の調整パターン&gt;</p>
+            <p className="mt-10">◆支給額の調整パターン</p>
             <div className="rounded-lg border-2 border-yellow-500 p-5 mt-5">
               <p className="p-1 text-gray-900">➀ 満額支給</p>
               <p className="ml-4 font-bold">
@@ -100,6 +100,16 @@ export const CalculateSentence = () => {
               <p className="ml-4 font-bold">
                 → 給与額が、賃金月額の８０％を超える場合
               </p>
+            </div>
+            <div className="my-10">
+              <p>
+                ◆賃金月額を30万と仮定して就労した場合の育児休業給付金を計算してみましょう。
+              </p>
+              <div className="rounded-lg border-2 border-[#39497C] p-3 mt-4">
+                <p>➀</p>
+                <p>➁</p>
+                <p>➂</p>
+              </div>
             </div>
           </div>
         </section>
