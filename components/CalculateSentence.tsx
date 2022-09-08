@@ -87,7 +87,7 @@ export const CalculateSentence = () => {
             </div>
 
             <p className="mt-10">&lt;支給額の調整パターン&gt;</p>
-            <div className="border-2 border-yellow-500 p-5 mt-5">
+            <div className="rounded-lg border-2 border-yellow-500 p-5 mt-5">
               <p className="p-1 text-gray-900">➀ 満額支給</p>
               <p className="ml-4 font-bold">
                 → 給与額が、賃金月額の１３％（または３０％）まで

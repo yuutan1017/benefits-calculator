@@ -73,15 +73,16 @@ const ChildcareCalculate = () => {
         <section>
           <InitialSentence />
 
-          <section className="flex flex-col mx-4 mt-8">
-            <form className="py-5 mt-6 bg-gray-300 border-t-4 border-[#39497C]">
-              <div className="flex flex-row justify-center mt-2">
+          <section className="flex flex-col mx-4 mt-4">
+            <form className="py-5 mt-6 rounded-lg bg-gray-300 border-2 border-[#39497C]">
+              <p className='text-xs text-blue-800'>※設定を変更し計算してみましょう※</p>
+              <div className="flex flex-row justify-center mt-5">
                 <label htmlFor="startDate">開始日程</label>
                 <input
                   id="startDate"
                   type="date"
                   defaultValue={`${data.startYear}-${data.startMonth}-${data.startDay}`}
-                  className="border-b-2 border-gray-400 w-32 ml-2 outline-none"
+                  className="border-b-2 border-gray-400 w-32 ml-2 outline-none px-1"
                   onChange={dateSprit}
                 />
               </div>
@@ -157,7 +158,7 @@ const ChildcareCalculate = () => {
                   <p className="ml-2">です。</p>
                 </div>
               </div>
-              <table className="bg-gray-100 border-gray-300 text-sm">
+              <table className="bg-gray-100 border-gray-300 text-sm rounded-lg">
                 <thead className="bg-slate-400 border-b border-[#39497C]">
                   <tr>
                     <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
