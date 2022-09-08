@@ -158,11 +158,11 @@ const ChildcareCalculate = () => {
                   <p className="ml-2">です。</p>
                 </div>
               </div>
-              <table className="bg-gray-100 border-gray-300 text-sm rounded-lg">
+              <table className="bg-gray-100 border-gray-300 text-sm">
                 <thead className="bg-slate-400 border-b border-[#39497C]">
                   <tr>
                     <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
-                      終了年月
+                      期間
                     </th>
                     <th className="py-2 border border-gray-500 text-xs">
                       毎月の支給額
