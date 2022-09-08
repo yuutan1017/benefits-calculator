@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { Layout } from '../components/Layout';
 import { today } from '../components/today';
 import { InitialSentence } from '../components/InitialSentence';
-import { setChildcareInputs } from '../types/type';
-import { setEndDate } from '../types/type';
+import { CalculateSentence } from '../components/CalculateSentence';
+
+import type { setChildcareInputs } from '../types/type';
+import type { setEndDate } from '../types/type';
 
 const ChildcareCalculate = () => {
   let { year, month, day } = today();
@@ -72,7 +74,7 @@ const ChildcareCalculate = () => {
           <InitialSentence />
 
           <section className="flex flex-col mx-4 mt-8">
-            <form className="py-5 mt-6 bg-gray-300 border-t-2 border-[#39497C]">
+            <form className="py-5 mt-6 bg-gray-300 border-t-4 border-[#39497C]">
               <div className="flex flex-row justify-center mt-2">
                 <label htmlFor="startDate">開始日程</label>
                 <input
@@ -179,6 +181,8 @@ const ChildcareCalculate = () => {
               </table>
             </div>
           </section>
+
+          <CalculateSentence />
         </section>
       </Layout>
     </>
