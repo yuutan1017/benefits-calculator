@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const CalculateSentence = () => {
   return (
     <>
-      <section className="mx-4 mt-8 text-left border-t-4 border-[#39497C]">
+      <section className="mx-4 mt-8 text-left border-t-4 border-[#1E2678]">
         <section>
           <div className="flex flex-row items-center text-center">
             <span className="font-bold text-xl text-center mr-2 mt-8 text-yellow-500">
@@ -51,7 +51,7 @@ export const CalculateSentence = () => {
             </p>
             <p>
               あくまで
-              <b className="border-b-4 border-yellow-400">
+              <b className="bg-[#FFF33F] inline bg-gradient-to-b from-white via-white pt-1 pb-0.5">
                 「臨時的かつ一時的」
               </b>
               なものでなくてはなりません。
@@ -105,7 +105,7 @@ export const CalculateSentence = () => {
               <p>
                 ◆賃金月額を30万と仮定して就労した場合の育児休業給付金を計算してみましょう。
               </p>
-              <div className="rounded-lg border-2 border-[#39497C] p-3 mt-4">
+              <div className="rounded-lg border-2 border-[#1E2678] p-3 mt-4">
                 <p>➀</p>
                 <p>➁</p>
                 <p>➂</p>

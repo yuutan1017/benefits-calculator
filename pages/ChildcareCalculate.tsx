@@ -137,7 +137,7 @@ const ChildcareCalculate = () => {
               <div className="flex flex-row justify-center mt-8">
                 <button
                   type="button"
-                  className="rounded w-40 bg-[#39497C] py-1 font-light text-white outline-none"
+                  className="rounded w-40 bg-[#1E2678] py-1 font-light text-white outline-none"
                   onClick={calculateDailyWage}
                 >
                   計算する
@@ -147,7 +147,7 @@ const ChildcareCalculate = () => {
             <div
               className={`flex flex-col justify-center mt-8 mb-10 ${
                 visible ? 'visible' : 'hidden'
-              } border-t-2 border-[#39497C]`}
+              } border-t-2 border-[#1E2678]`}
             >
               <div className="text-sm flex flex-row my-5">
                 <div className="flex flex-row items-end">
@@ -159,7 +159,7 @@ const ChildcareCalculate = () => {
                 </div>
               </div>
               <table className="bg-gray-100 border-gray-300 text-sm">
-                <thead className="bg-slate-400 border-b border-[#39497C]">
+                <thead className="bg-slate-400 border-b border-[#1E2678]">
                   <tr>
                     <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
                       期間

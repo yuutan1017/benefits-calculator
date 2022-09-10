@@ -8,13 +8,13 @@ export const InitialSentence = () => {
         <h1 className="text-2xl font-bold">
           あなたの育児休業給付金、自動で計算します。
         </h1>
-        <div className="text-md text-left mt-10 border-[#39497C]">
+        <div className="text-md text-left mt-10 border-[#1E2678]">
           <p>
             労働者が子育てするために休業する場合、育児休業給付金が受け取れます。
           </p>
-          <p>
+          <p className='pb-1'>
             また、
-            <b className="border-b-4 border-yellow-400">
+            <b className="bg-[#FFF33F] inline bg-gradient-to-b from-white via-white pt-1 pb-0.5">
               育児休業期間中は社会保険料などの納付が免除されます。
             </b>
           </p>
