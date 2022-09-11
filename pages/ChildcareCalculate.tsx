@@ -11,25 +11,31 @@ const ChildcareCalculate = () => {
     childCount: 1,
     grossIncome: 300000,
     netIncome: 230000,
-    checkedOverSixMonth: false,
+    dailyWage: 12000,
   });
-  const [payment, setPayment] = useState({ sixMonth: 0, afterSixMonth: 0 });
-  let sixPayment = payment.sixMonth.toLocaleString();
-  let totalPayment = (payment.sixMonth * 6).toLocaleString();
-  let afterSixPayment = payment.afterSixMonth.toLocaleString();
-  let AfterSixTotalPayment = (payment.afterSixMonth * 6).toLocaleString();
+  const [payment, setPayment] = useState({
+    sixMonth: 0,
+    afterSixMonth: 0,
+    makeMoney: 0,
+  });
+  const sixPayment = payment.sixMonth.toLocaleString();
+  const totalPayment = (payment.sixMonth * 6).toLocaleString();
+  const afterSixPayment = payment.afterSixMonth.toLocaleString();
+  const AfterSixTotalPayment = (payment.afterSixMonth * 6).toLocaleString();
+  const makeMoney = payment.makeMoney.toLocaleString();
+
   const [visible, setVisible] = useState<boolean>(false);
 
-  const onChangeCheckBox = () => {
-    data.checkedOverSixMonth = !data.checkedOverSixMonth;
-  };
-
   const calculateDailyWage = () => {
+    const eightyPer = (data.grossIncome / 100) * 80 * data.childCount;
+    const sixSevenPer = (data.grossIncome / 100) * 67 * data.childCount;
+    const fiftyPer = (data.grossIncome / 100) * 50 * data.childCount;
     if (!visible) setVisible(!visible);
     setPayment({
       ...payment,
-      sixMonth: (data.grossIncome / 100) * 67 * data.childCount,
-      afterSixMonth: (data.grossIncome / 100) * 50 * data.childCount,
+      sixMonth: sixSevenPer,
+      afterSixMonth: fiftyPer,
+      makeMoney: eightyPer - sixSevenPer,
     });
   };
 
@@ -84,13 +90,17 @@ const ChildcareCalculate = () => {
                 <span className="pl-1">円</span>
               </div>
               <div className="flex flex-row justify-center mt-4">
-                <label htmlFor="check">所得期間が6ヶ月以上の方</label>
+                <label htmlFor="netIncome">1日あたりの賃金</label>
                 <input
-                  id="check"
-                  type="checkbox"
-                  className="w-4 ml-2"
-                  onClick={onChangeCheckBox}
+                  id="dailyWage"
+                  type="number"
+                  defaultValue={data.dailyWage}
+                  className="border-b-2 border-gray-400 w-32 ml-2 pl-2 outline-none"
+                  onChange={(e) => {
+                    setData({ ...data, dailyWage: parseInt(e.target.value) });
+                  }}
                 />
+                <span className="pl-1">円</span>
               </div>
               <div className="flex flex-row justify-center mt-8">
                 <button
@@ -107,11 +117,27 @@ const ChildcareCalculate = () => {
                 visible ? 'visible' : 'hidden'
               } border-t-2 border-[#1E2678]`}
             >
-              <div className="text-sm flex flex-row my-5">
+              <div className="text-xs flex flex-row my-5">
                 <div className="flex flex-row items-end">
-                  <p className="mr-2">月々もらえる金額は</p>
+                  <p className="mr-2 text-gray-600">月々もらえる金額は</p>
                   <p className="text-2xl">{sixPayment}円</p>
-                  <p className="ml-2">です。</p>
+                  <p className="ml-2 text-gray-600">です</p>
+                </div>
+              </div>
+              <div className="text-xs flex flex-row mb-5">
+                <div className="flex flex-row items-end ">
+                  <p className="mr-2 text-gray-600">減額されず稼げる金額は</p>
+                  <p className="text-2xl">{makeMoney}円</p>
+                  <p className="ml-2 text-gray-600">です</p>
+                </div>
+              </div>
+              <div className="text-xs flex flex-row mb-5">
+                <div className="flex flex-row items-end ">
+                  <p className="mr-2 text-gray-600">減額されず働ける日数は</p>
+                  <p className="text-2xl">
+                    {Math.floor(payment.makeMoney / data.dailyWage)}日
+                  </p>
+                  <p className="ml-2 text-gray-600">です</p>
                 </div>
               </div>
               <table className="bg-gray-100 border-gray-300 text-sm">

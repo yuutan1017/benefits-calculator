@@ -8,13 +8,10 @@ export interface InputValue {
 }
 
 export interface setChildcareInputs {
-  startYear?: string;
-  startMonth?: string;
-  startDay?: string;
   childCount: number;
   grossIncome: number;
   netIncome: number;
-  checkedOverSixMonth: boolean;
+  dailyWage: number;
 }
 
 export interface setEndDate {
