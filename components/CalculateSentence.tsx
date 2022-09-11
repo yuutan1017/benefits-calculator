@@ -51,7 +51,7 @@ export const CalculateSentence = () => {
             </p>
             <p>
               あくまで
-              <b className="bg-[#FFF33F] inline bg-gradient-to-b from-white via-white pt-1 pb-0.5">
+              <b className="bg-[#FFF100] inline bg-gradient-to-b from-white">
                 「臨時的かつ一時的」
               </b>
               なものでなくてはなりません。
@@ -86,7 +86,7 @@ export const CalculateSentence = () => {
               <p>なお、収入額によっては次のような支給の調整が行われます。</p>
             </div>
 
-            <p className="mt-10">◆支給額の調整パターン</p>
+            <p className="mt-14">◆支給額の調整パターン</p>
             <div className="rounded-lg border-2 border-yellow-500 p-5 mt-5">
               <p className="p-1 text-gray-900">➀ 満額支給</p>
               <p className="ml-4 font-bold">
@@ -101,14 +101,36 @@ export const CalculateSentence = () => {
                 → 給与額が、賃金月額の８０％を超える場合
               </p>
             </div>
-            <div className="my-10">
+            <div className="my-14">
               <p>
                 ◆賃金月額を30万と仮定して就労した場合の育児休業給付金を計算してみましょう。
               </p>
-              <div className="rounded-lg border-2 border-[#1E2678] p-3 mt-4">
-                <p>➀</p>
-                <p>➁</p>
-                <p>➂</p>
+              <div className="rounded-lg border-2 border-[#1E2678] p-5 mt-5">
+                <p>➀ 36,000円の賃金が支払われた場合</p>
+                <p className="ml-4 mt-2">36,000円は300,000円の12%ですので</p>
+                <p className="ml-4">
+                  →
+                  <b className="bg-[#FFF100] inline bg-gradient-to-b from-white ml-1">
+                    201,000円（全額）支給されます
+                  </b>
+                </p>
+                <p className="mt-7">➁ 96,000円の賃金が支払われた場合</p>
+                <p className="ml-4 mt-2">96,000円は300,000円の32%ですので</p>
+                <p className="ml-4 mt-2">
+                  240,000円（80%） - 96,000円（32%） =
+                  <b className="bg-[#FFF100] inline bg-gradient-to-b from-white ml-1">
+                    144,000円（48%）が支給されます
+                  </b>
+                </p>
+                <p className="mt-7">
+                  ➂ 240,000円（80%）以上の賃金が支払われた場合
+                </p>
+                <p className="ml-4">
+                  →
+                  <b className="bg-[#FFF100] inline bg-gradient-to-b from-white ml-1">
+                    支給はありません
+                  </b>
+                </p>
               </div>
             </div>
           </div>

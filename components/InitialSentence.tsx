@@ -12,11 +12,12 @@ export const InitialSentence = () => {
           <p>
             労働者が子育てするために休業する場合、育児休業給付金が受け取れます。
           </p>
-          <p className='pb-1'>
+          <p className="pb-1">
             また、
-            <b className="bg-[#FFF33F] inline bg-gradient-to-b from-white via-white pt-1 pb-0.5">
-              育児休業期間中は社会保険料などの納付が免除されます。
+            <b className="bg-[#FFF100] inline bg-gradient-to-b from-white">
+              育児休業期間中は社会保険料などの納付が免除されます
             </b>
+            。
           </p>
         </div>
         <div className="mt-8 mb-2 text-left">
