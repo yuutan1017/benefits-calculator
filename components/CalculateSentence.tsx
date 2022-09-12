@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const CalculateSentence = () => {
   return (
     <>
-      <section className="mx-4 mt-8 text-left border-t-4 border-[#1E2678]">
+      <section className="mx-4 mt-8 text-left border-t-2 border-[#1E2678]">
         <section>
           <div className="flex flex-row items-center text-center">
             <span className="font-bold text-xl text-center mr-2 mt-8 text-yellow-500">
