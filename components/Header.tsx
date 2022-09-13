@@ -1,15 +1,19 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link as Scroll } from 'react-scroll';
 
 export const Header = () => {
   return (
     <header>
-      <nav className="w-screen">
-        <div className='flex flex-row justify-center items-center my-3'>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>contact</button>
+      <nav className="flex flex-row justify-center mt-8">
+        <div className="mr-4 border-b-2">
+          <Scroll to="methodCalculate" duration={700} offset={50} smooth>
+            計算方法
+          </Scroll>
+        </div>
+        <div className="ml-4 border-b-2">
+          <Scroll to="aboutWork" duration={700} offset={50} smooth>
+            育休中の就労について
+          </Scroll>
         </div>
       </nav>
     </header>

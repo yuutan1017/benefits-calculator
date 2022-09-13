@@ -1,8 +1,6 @@
 import type { NextPage } from 'next';
-import { Link as Scroll } from 'react-scroll';
 
 import { Layout } from '../components/Layout';
-import { Navbar } from '../components/Navbar';
 import { AboutWorkSentence } from '../components/sentence/AboutWorkSentence';
 import { CalculateSentence } from '../components/sentence/CalculateSentence';
 import { InitialSentence } from '../components/sentence/InitialSentence';
@@ -16,7 +14,6 @@ const Home: NextPage = () => {
           <InitialSentence />
         </section>
         <section>
-          <Navbar />
           <Main />
         </section>
         <section id="methodCalculate">
