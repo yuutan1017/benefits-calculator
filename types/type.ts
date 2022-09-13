@@ -13,6 +13,13 @@ export interface setChildcareInputs {
   dailyWage: number;
 }
 
+export interface Payment {
+  sixMonth: number,
+  afterSixMonth: number,
+  toSixMakeMoney: number,
+  toAfterSixMakeMoney: number,
+}
+
 export interface contactInputs {
   example: string;
   exampleRequired: string;

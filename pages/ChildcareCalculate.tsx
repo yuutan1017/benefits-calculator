@@ -5,7 +5,7 @@ import { Layout } from '../components/Layout';
 import { InitialSentence } from '../components/InitialSentence';
 import { CalculateSentence } from '../components/CalculateSentence';
 
-import type { setChildcareInputs } from '../types/type';
+import type { Payment, setChildcareInputs } from '../types/type';
 
 const ChildcareCalculate = () => {
   const [data, setData] = useState<setChildcareInputs>({
@@ -13,26 +13,26 @@ const ChildcareCalculate = () => {
     netIncome: 430000,
     dailyWage: 8200,
   });
-  const [payment, setPayment] = useState({
+  const [payment, setPayment] = useState<Payment>({
     sixMonth: 0,
     afterSixMonth: 0,
-    toMakeMoneySix: 0,
-    toMakeMoneySixAfter: 0,
+    toSixMakeMoney: 0,
+    toAfterSixMakeMoney: 0,
   });
-  const sixPayment = payment.sixMonth.toLocaleString();
-  const totalPayment = (payment.sixMonth * 6).toLocaleString();
-  const afterSixPayment = payment.afterSixMonth.toLocaleString();
-  const totalYearPayment = (
-    payment.sixMonth * 6 +
-    payment.afterSixMonth * 6
-  ).toLocaleString();
-  const sixMakeMoney = payment.toMakeMoneySix;
-  const afterSixMakeMoney = payment.toMakeMoneySixAfter;
+  const sixPayment = Math.floor(payment.sixMonth);
+  const totalPayment = Math.floor(payment.sixMonth * 6);
+  const afterSixPayment = Math.floor(payment.afterSixMonth);
+  const totalYearPayment = Math.floor(
+    payment.sixMonth * 6 + payment.afterSixMonth * 6
+  );
+  const sixMakeMoney = Math.floor(payment.toSixMakeMoney);
+  const afterSixMakeMoney = Math.floor(payment.toAfterSixMakeMoney);
   const sixWorkingDays = Math.floor(sixMakeMoney / data.dailyWage);
   const afterSixWorkingDays = Math.floor(afterSixMakeMoney / data.dailyWage);
   const differencePayment = (comparison: number) => comparison - data.netIncome;
 
   const [visible, setVisible] = useState<boolean>(false);
+  const [upperLimit, setUpperLimit] = useState<boolean>(true);
 
   const calculateDailyWage = () => {
     const eightyPer = (data.grossIncome / 100) * 80;
@@ -40,17 +40,20 @@ const ChildcareCalculate = () => {
     let fiftyPer = (data.grossIncome / 100) * 50;
     let toMakeMoneySix = eightyPer - sixSevenPer;
     let toMakeMoneySixAfter = eightyPer - fiftyPer;
-    if (sixSevenPer > 305721) {
+    if (sixSevenPer >= 305721) {
       sixSevenPer = 305721;
       fiftyPer = 228150;
+      if (upperLimit) setUpperLimit(!upperLimit);
+    } else {
+      if (!upperLimit) setUpperLimit(!upperLimit);
     }
     if (!visible) setVisible(!visible);
     setPayment({
       ...payment,
       sixMonth: sixSevenPer,
       afterSixMonth: fiftyPer,
-      toMakeMoneySix: toMakeMoneySix,
-      toMakeMoneySixAfter: toMakeMoneySixAfter,
+      toSixMakeMoney: toMakeMoneySix,
+      toAfterSixMakeMoney: toMakeMoneySixAfter,
     });
   };
 
@@ -138,7 +141,7 @@ const ChildcareCalculate = () => {
                   <tr>
                     <th className="py-3 border border-gray-400">６ヶ月まで</th>
                     <th className="py-2 border border-gray-400">
-                      {sixPayment}円
+                      {sixPayment.toLocaleString()}円
                     </th>
                     <th
                       className={`${
@@ -155,7 +158,7 @@ const ChildcareCalculate = () => {
                       ６ヶ月経過後
                     </th>
                     <th className="py-2 border border-gray-400">
-                      {afterSixPayment}円
+                      {afterSixPayment.toLocaleString()}円
                     </th>
                     <th
                       className={`${
@@ -187,64 +190,60 @@ const ChildcareCalculate = () => {
                 <tbody>
                   <tr>
                     <th className="py-4 border border-gray-400">
-                      {totalPayment}円
+                      {totalPayment.toLocaleString()}円
                     </th>
                     <th className="py-4 border border-gray-400">
-                      {totalYearPayment}円
+                      {totalYearPayment.toLocaleString()}円
                     </th>
                   </tr>
                 </tbody>
               </table>
               <p className="text-left mb-2 mt-4">◆就労する場合</p>
-              {/* <div className="text-xs mb-2">
-                <div className="flex flex-row items-end ">
-                  <p className="mr-2">・減額されず働ける日数は</p>
-                  <p className="text-2xl font-bold text-[#0f144b]">
-                    {sixWorkingDays}日
-                    {afterSixWorkingDays}日
-                  </p>
-                  <p className="ml-2">です</p>
-                </div>
-              </div>
-              <div className="text-xs mb-2">
-                <div className="flex flex-row items-end">
-                  <p className="mr-2">・減額されず稼げる金額は</p>
-                  <p className="text-2xl font-bold text-[#0f144b]">
-                    {sixMakeMoney}円
-                    {afterSixMakeMoney}円
-                  </p>
-                  <p className="ml-2">です</p>
-                </div>
-              </div> */}
-              <table className={`$ bg-gray-200 border-gray-300 text-sm mb-5`}>
-                <thead className="bg-[#1E2678] text-white">
-                  <tr>
-                    <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
-                      期間
-                    </th>
-                    <th className="py-2 border border-gray-500 text-xs">
-                      就労できる日数
-                    </th>
-                    <th className="py-2 border border-gray-500 text-xs">
-                      減額されず稼げる金額
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th className="py-3 border border-gray-400">６ヶ月まで</th>
-                    <th className="py-2 border border-gray-400">{sixWorkingDays}日</th>
-                    <th className="py-2 border border-gray-400">{sixMakeMoney.toLocaleString()}円</th>
-                  </tr>
-                  <tr>
-                    <th className="py-3 border border-gray-400">
-                      ６ヶ月経過後
-                    </th>
-                    <th className="py-2 border border-gray-400">{afterSixWorkingDays}日</th>
-                    <th className="py-2 border border-gray-400">{afterSixMakeMoney.toLocaleString()}円</th>
-                  </tr>
-                </tbody>
-              </table>
+              {upperLimit ? (
+                <table className="bg-gray-200 border-gray-300 text-sm mb-5">
+                  <thead className="bg-[#1E2678] text-white">
+                    <tr>
+                      <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
+                        期間
+                      </th>
+                      <th className="py-2 border border-gray-500 text-xs">
+                        就労できる日数
+                      </th>
+                      <th className="py-2 border border-gray-500 text-xs">
+                        減額されず稼げる金額
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th className="py-3 border border-gray-400">
+                        ６ヶ月まで
+                      </th>
+                      <th className="py-2 border border-gray-400">
+                        {sixWorkingDays}日
+                      </th>
+                      <th className="py-2 border border-gray-400">
+                        {sixMakeMoney.toLocaleString()}円
+                      </th>
+                    </tr>
+                    <tr>
+                      <th className="py-3 border border-gray-400">
+                        ６ヶ月経過後
+                      </th>
+                      <th className="py-2 border border-gray-400">
+                        {afterSixWorkingDays}日
+                      </th>
+                      <th className="py-2 border border-gray-400">
+                        {afterSixMakeMoney.toLocaleString()}円
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
+              ) : (
+                <p className="mt-3 text-sm text-left">
+                  支給額が上限額に達している為、就労できません
+                </p>
+              )}
               <div className="text-[12px] text-gray-500 mt-10 text-left">
                 <p>※こちらの計算結果はあくまで概算となりますので、</p>
                 <Link href="/AveCalculate">

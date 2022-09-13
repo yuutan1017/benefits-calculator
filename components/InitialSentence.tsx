@@ -6,7 +6,7 @@ export const InitialSentence = () => {
     <>
       <article className="mx-4 mt-16 text-sm">
         <h1 className="text-2xl font-bold">
-          育休中に働いた場合はどうなるか。
+          育休中に働いた場合はどうなるか、自動でシミュレーションします。
         </h1>
         <div className="text-left mt-10 border-[#1E2678]">
           <p>
