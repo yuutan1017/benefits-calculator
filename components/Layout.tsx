@@ -12,7 +12,7 @@ export const Layout = ({ children }: any): JSX.Element => {
 
       {/* <Header /> */}
 
-      <main className="flex flex-col flex-auto md:w-screen items-center justify-center text-center w-96">
+      <main className="flex flex-col flex-auto w-screen items-center justify-center text-center">
         {children}
       </main>
 
