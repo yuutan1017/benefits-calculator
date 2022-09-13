@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 import { Layout } from '../components/Layout';
 import { InitialSentence } from '../components/InitialSentence';
@@ -106,9 +107,9 @@ const ChildcareCalculate = () => {
             <div
               className={`flex flex-col justify-center mt-10 ${
                 visible ? 'visible' : 'hidden'
-              } border-t-2 border-[#1E2678] text`}
+              } border-t-2 border-[#1E2678]`}
             >
-              <p className="mt-8 text-left mb-2">◆月々の支給額</p>
+              <p className="mt-12 text-left mb-2">◆月々の支給額</p>
               <table className="bg-gray-200 border-gray-300 text-sm mb-5">
                 <thead className="bg-[#1E2678] text-white">
                   <tr>
@@ -185,19 +186,32 @@ const ChildcareCalculate = () => {
                 </tbody>
               </table>
               <p className="text-left mb-2 mt-4">◆就労する場合</p>
-              <div className="text-xs mb-3 mt-2">
+              <div className="text-xs mb-2">
                 <div className="flex flex-row items-end ">
-                  <p className="mr-2 text-gray-600">減額されず働ける日数は</p>
-                  <p className="text-2xl font-bold text-[#0f144b]">{workingDays}日</p>
-                  <p className="ml-2 text-gray-600">です</p>
+                  <p className="mr-2">・減額されず働ける日数は</p>
+                  <p className="text-2xl font-bold text-[#0f144b]">
+                    {workingDays}日
+                  </p>
+                  <p className="ml-2">です</p>
                 </div>
               </div>
               <div className="text-xs mb-2">
                 <div className="flex flex-row items-end">
-                  <p className="mr-2 text-gray-600">減額されず稼げる金額は</p>
-                  <p className="text-2xl font-bold text-[#0f144b]">{makeMoney}円</p>
-                  <p className="ml-2 text-gray-600">です</p>
+                  <p className="mr-2">・減額されず稼げる金額は</p>
+                  <p className="text-2xl font-bold text-[#0f144b]">
+                    {makeMoney}円
+                  </p>
+                  <p className="ml-2">です</p>
                 </div>
+              </div>
+              <div className="text-[12px] text-gray-500 mt-10 text-left">
+                <p>※こちらの計算結果はあくまで概算となりますので、</p>
+                <Link href="/AveCalculate">
+                  <a className='hover:text-blue-400'>
+                    より正確に計算したい場合は毎月の総支給額の欄を休業開始時賃金日額
+                    × 30日で計算してみて下さい。
+                  </a>
+                </Link>
               </div>
             </div>
           </section>
