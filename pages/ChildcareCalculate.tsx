@@ -9,14 +9,15 @@ import type { setChildcareInputs } from '../types/type';
 
 const ChildcareCalculate = () => {
   const [data, setData] = useState<setChildcareInputs>({
-    grossIncome: 300000,
-    netIncome: 230000,
-    dailyWage: 12000,
+    grossIncome: 550000,
+    netIncome: 430000,
+    dailyWage: 8200,
   });
   const [payment, setPayment] = useState({
     sixMonth: 0,
     afterSixMonth: 0,
-    makeMoney: 0,
+    toMakeMoneySix: 0,
+    toMakeMoneySixAfter: 0,
   });
   const sixPayment = payment.sixMonth.toLocaleString();
   const totalPayment = (payment.sixMonth * 6).toLocaleString();
@@ -25,22 +26,31 @@ const ChildcareCalculate = () => {
     payment.sixMonth * 6 +
     payment.afterSixMonth * 6
   ).toLocaleString();
-  const makeMoney = payment.makeMoney.toLocaleString();
-  const workingDays = Math.floor(payment.makeMoney / data.dailyWage);
+  const sixMakeMoney = payment.toMakeMoneySix;
+  const afterSixMakeMoney = payment.toMakeMoneySixAfter;
+  const sixWorkingDays = Math.floor(sixMakeMoney / data.dailyWage);
+  const afterSixWorkingDays = Math.floor(afterSixMakeMoney / data.dailyWage);
   const differencePayment = (comparison: number) => comparison - data.netIncome;
 
   const [visible, setVisible] = useState<boolean>(false);
 
   const calculateDailyWage = () => {
     const eightyPer = (data.grossIncome / 100) * 80;
-    const sixSevenPer = (data.grossIncome / 100) * 67;
-    const fiftyPer = (data.grossIncome / 100) * 50;
+    let sixSevenPer = (data.grossIncome / 100) * 67;
+    let fiftyPer = (data.grossIncome / 100) * 50;
+    let toMakeMoneySix = eightyPer - sixSevenPer;
+    let toMakeMoneySixAfter = eightyPer - fiftyPer;
+    if (sixSevenPer > 305721) {
+      sixSevenPer = 305721;
+      fiftyPer = 228150;
+    }
     if (!visible) setVisible(!visible);
     setPayment({
       ...payment,
       sixMonth: sixSevenPer,
       afterSixMonth: fiftyPer,
-      makeMoney: eightyPer - sixSevenPer,
+      toMakeMoneySix: toMakeMoneySix,
+      toMakeMoneySixAfter: toMakeMoneySixAfter,
     });
   };
 
@@ -186,11 +196,12 @@ const ChildcareCalculate = () => {
                 </tbody>
               </table>
               <p className="text-left mb-2 mt-4">◆就労する場合</p>
-              <div className="text-xs mb-2">
+              {/* <div className="text-xs mb-2">
                 <div className="flex flex-row items-end ">
                   <p className="mr-2">・減額されず働ける日数は</p>
                   <p className="text-2xl font-bold text-[#0f144b]">
-                    {workingDays}日
+                    {sixWorkingDays}日
+                    {afterSixWorkingDays}日
                   </p>
                   <p className="ml-2">です</p>
                 </div>
@@ -199,15 +210,45 @@ const ChildcareCalculate = () => {
                 <div className="flex flex-row items-end">
                   <p className="mr-2">・減額されず稼げる金額は</p>
                   <p className="text-2xl font-bold text-[#0f144b]">
-                    {makeMoney}円
+                    {sixMakeMoney}円
+                    {afterSixMakeMoney}円
                   </p>
                   <p className="ml-2">です</p>
                 </div>
-              </div>
+              </div> */}
+              <table className={`$ bg-gray-200 border-gray-300 text-sm mb-5`}>
+                <thead className="bg-[#1E2678] text-white">
+                  <tr>
+                    <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
+                      期間
+                    </th>
+                    <th className="py-2 border border-gray-500 text-xs">
+                      就労できる日数
+                    </th>
+                    <th className="py-2 border border-gray-500 text-xs">
+                      減額されず稼げる金額
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th className="py-3 border border-gray-400">６ヶ月まで</th>
+                    <th className="py-2 border border-gray-400">{sixWorkingDays}日</th>
+                    <th className="py-2 border border-gray-400">{sixMakeMoney.toLocaleString()}円</th>
+                  </tr>
+                  <tr>
+                    <th className="py-3 border border-gray-400">
+                      ６ヶ月経過後
+                    </th>
+                    <th className="py-2 border border-gray-400">{afterSixWorkingDays}日</th>
+                    <th className="py-2 border border-gray-400">{afterSixMakeMoney.toLocaleString()}円</th>
+                  </tr>
+                </tbody>
+              </table>
               <div className="text-[12px] text-gray-500 mt-10 text-left">
                 <p>※こちらの計算結果はあくまで概算となりますので、</p>
                 <Link href="/AveCalculate">
-                  <a className='hover:text-blue-400'>
+                  <a className="hover:text-blue-400">
                     より正確に計算したい場合は毎月の総支給額の欄を休業開始時賃金日額
                     × 30日で計算してみて下さい。
                   </a>
