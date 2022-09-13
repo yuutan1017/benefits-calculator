@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { Link as Scroll } from 'react-scroll';
 
 import { Layout } from '../components/Layout';
 import { InitialSentence } from '../components/InitialSentence';
 import { CalculateSentence } from '../components/CalculateSentence';
 
 import type { Payment, setChildcareInputs } from '../types/type';
+import { AboutWorkSentence } from '../components/AboutWorkSentence';
 
 const ChildcareCalculate = () => {
   const [data, setData] = useState<setChildcareInputs>({
@@ -61,10 +63,23 @@ const ChildcareCalculate = () => {
     <>
       <Layout>
         <section>
-          <InitialSentence />
-
-          <section className="flex flex-col mx-4 mt-4">
-            <form className="py-5 mt-6 rounded-lg bg-gray-200 border-2 border-[#39497C]">
+          <section>
+            <InitialSentence />
+          </section>
+          <nav className="flex flex-row justify-center mt-8">
+            <div className="mr-4 border-b-2">
+              <Scroll to="methodCalculate" duration={700} offset={50} smooth>
+                計算方法
+              </Scroll>
+            </div>
+            <div className="ml-4 border-b-2">
+              <Scroll to="aboutWork" duration={700} offset={50} smooth>
+                育休中の就労について
+              </Scroll>
+            </div>
+          </nav>
+          <section className="flex flex-col mx-4">
+            <form className="py-5 mt-5 rounded-lg bg-gray-200 border-2 border-[#39497C]">
               <p className="text-xs text-blue-800">
                 ※設定を変更し計算してみましょう※
               </p>
@@ -255,8 +270,12 @@ const ChildcareCalculate = () => {
               </div>
             </div>
           </section>
-
-          <CalculateSentence />
+          <section id="methodCalculate">
+            <CalculateSentence />
+          </section>
+          <section id="aboutWork">
+            <AboutWorkSentence />
+          </section>
         </section>
       </Layout>
     </>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const InitialSentence = () => {
+export const InitialSentence = (): JSX.Element => {
   return (
     <>
       <article className="mx-4 mt-16 text-sm">

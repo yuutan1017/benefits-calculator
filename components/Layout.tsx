@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
-export const Layout = ({ children }: any) => {
+export const Layout = ({ children }: any): JSX.Element => {
   return (
     <div className="flex flex-col min-h-screen items-center justify-center">
       <Head>
