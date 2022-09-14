@@ -4,8 +4,8 @@ import Link from 'next/link';
 export const InitialSentence = (): JSX.Element => {
   return (
     <>
-      <article className="mt-14 text-sm">
-        <h1 className="text-2xl font-bold">
+      <article className="text-sm border-t-2 border-[#1E2678]">
+        <h1 className="text-2xl font-bold text-left mt-12">
           育休中に働いた場合はどうなるか、自動でシミュレーションします。
         </h1>
         <div className="text-left mt-10 border-[#1E2678]">

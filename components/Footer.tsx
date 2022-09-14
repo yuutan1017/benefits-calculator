@@ -20,14 +20,7 @@ export const Footer = () => {
           </Link>
         </li>
         <li>
-          <Link href="/Contact">
-            <a className="mr-4 text-gray-500 hover:underline hover:text-blue-400 sm:mr-8 sm:text-lg">
-              Contact
-            </a>
-          </Link>
-        </li>
-        <li>
-          <p className="sm:text-lg font-light text-gray-500">copyright@yuutan</p>
+          <p className="sm:text-lg font-light text-gray-500 ml-6">copyright@yuutan</p>
         </li>
       </ul>
     </footer>
