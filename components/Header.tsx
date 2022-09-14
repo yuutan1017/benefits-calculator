@@ -4,7 +4,7 @@ import { Link as Scroll } from 'react-scroll';
 
 export const Header = () => {
   return (
-    <header className="w-full flex justify-center items-center border-t-2 pt-5 mr-20 md:mr-96 ">
+    <header className="w-full flex justify-center items-center border-t-2 pt-5 mr-24 md:mr-96 ">
       <ul className="flex flex-wrap items-center text-sm sm:mb-0 font-bold">
         <li>
           <Scroll to="methodCalculate" duration={500} offset={50} smooth>
