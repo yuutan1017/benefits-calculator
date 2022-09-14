@@ -100,7 +100,7 @@ const Main = () => {
             />
             <span className="pl-1">円</span>
           </div>
-          <Scroll to="results" duration={500} offset={-60} smooth>
+          <Scroll to="results" duration={500} offset={40} smooth>
             <div className="flex flex-row justify-center mt-8">
               <button
                 type="button"
@@ -112,12 +112,13 @@ const Main = () => {
             </div>
           </Scroll>
         </form>
+        <div id="results"></div>
         <div
           className={`flex flex-col justify-center mt-10 ${
             visible ? 'visible' : 'hidden'
           } border-t-2 border-[#1E2678]`}
         >
-          <p id='results' className="mt-12 text-left mb-2">◆月々の支給額</p>
+          <p className="mt-12 text-left mb-2">◆月々の支給額</p>
           <table className="bg-gray-200 border-gray-300 text-sm mb-5">
             <thead className="bg-[#1E2678] text-white">
               <tr>

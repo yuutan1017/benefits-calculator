@@ -56,15 +56,15 @@ export const AboutWorkSentence = (): JSX.Element => {
           <div className="rounded-lg border-2 border-yellow-500 p-5 mt-5">
             <p className="p-1 text-gray-900">➀ 満額支給</p>
             <p className="ml-4 font-bold">
-              → 給与額が、賃金月額の１３％（または３０％）まで
+              → 賃金が、賃金月額の１３％（または３０％）まで
             </p>
             <p className="p-1 mt-2 text-gray-900">➁ 支給額の調整</p>
             <p className="ml-4 font-bold">
-              → 給与額が、賃金月額の１３％（または３０％）超え、８０％未満
+              → 賃金が、賃金月額の１３％（または３０％）超え、８０％未満
             </p>
             <p className="p-1 mt-2 text-gray-900">➂ 支給停止</p>
             <p className="ml-4 font-bold">
-              → 給与額が、賃金月額の８０％を超える場合
+              → 賃金が、賃金月額の８０％を超える場合
             </p>
           </div>
           <div className="mt-14 mb-8">
