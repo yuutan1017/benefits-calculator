@@ -67,7 +67,7 @@ export const AboutWorkSentence = (): JSX.Element => {
               → 給与額が、賃金月額の８０％を超える場合
             </p>
           </div>
-          <div className="my-14">
+          <div className="mt-14 mb-8">
             <p>
               ◆賃金月額を30万と仮定して就労した場合の育児休業給付金を計算してみましょう。
             </p>

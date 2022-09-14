@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import { Footer } from './Footer';
-import { Header } from './Header';
 
 export const Layout = ({ children }: any): JSX.Element => {
   return (
@@ -10,9 +9,7 @@ export const Layout = ({ children }: any): JSX.Element => {
         <title>育児休業給付金　計算ツール</title>
       </Head>
 
-      <Header />
-
-      <main className="flex flex-col flex-auto w-screen items-center justify-center text-center">
+      <main className="flex flex-col flex-auto w-screen md:w-8/12 items-center justify-center text-center">
         {children}
       </main>
 

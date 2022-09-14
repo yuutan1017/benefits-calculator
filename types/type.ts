@@ -14,13 +14,14 @@ export interface setChildcareInputs {
 }
 
 export interface Payment {
-  sixMonth: number,
-  afterSixMonth: number,
-  toSixMakeMoney: number,
-  toAfterSixMakeMoney: number,
+  sixMonth: number;
+  afterSixMonth: number;
+  toSixMakeMoney: number;
+  toAfterSixMakeMoney: number;
 }
 
-export interface contactInputs {
-  example: string;
-  exampleRequired: string;
+export interface ContactInputs {
+  name: string;
+  email: string;
+  message: string;
 }
