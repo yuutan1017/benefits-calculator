@@ -10,13 +10,13 @@ export const Layout = ({ children }: any): JSX.Element => {
         <title>育児休業給付金　計算ツール</title>
       </Head>
 
-      {/* <Header /> */}
+      <Header />
 
       <main className="flex flex-col flex-auto w-screen items-center justify-center text-center">
         {children}
       </main>
 
-      <Footer />
+        <Footer />
     </div>
   );
 };

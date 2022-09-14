@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const InitialSentence = (): JSX.Element => {
   return (
     <>
-      <article className="mt-16 text-sm">
+      <article className="mt-12 text-sm">
         <h1 className="text-2xl font-bold">
           育休中に働いた場合はどうなるか、自動でシミュレーションします。
         </h1>

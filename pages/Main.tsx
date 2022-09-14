@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { Link as Scroll } from 'react-scroll';
 
 import type { Payment, setChildcareInputs } from '../types/type';
 
@@ -99,22 +100,24 @@ const Main = () => {
             />
             <span className="pl-1">円</span>
           </div>
-          <div className="flex flex-row justify-center mt-8">
-            <button
-              type="button"
-              className="rounded w-40 bg-[#1E2678] py-1 font-light text-white outline-none"
-              onClick={calculateDailyWage}
-            >
-              計算する
-            </button>
-          </div>
+          <Scroll to="results" duration={500} offset={-60} smooth>
+            <div className="flex flex-row justify-center mt-8">
+              <button
+                type="button"
+                className="rounded w-40 bg-[#1E2678] py-1 font-light text-white outline-none"
+                onClick={calculateDailyWage}
+              >
+                計算する
+              </button>
+            </div>
+          </Scroll>
         </form>
         <div
           className={`flex flex-col justify-center mt-10 ${
             visible ? 'visible' : 'hidden'
           } border-t-2 border-[#1E2678]`}
         >
-          <p className="mt-12 text-left mb-2">◆月々の支給額</p>
+          <p id='results' className="mt-12 text-left mb-2">◆月々の支給額</p>
           <table className="bg-gray-200 border-gray-300 text-sm mb-5">
             <thead className="bg-[#1E2678] text-white">
               <tr>
