@@ -4,12 +4,12 @@ import Link from 'next/link';
 export const AboutWorkSentence = (): JSX.Element => {
   return (
     <>
-      <section className='text-left'>
-        <div className="flex flex-row mt-16">
-          <span className="font-bold text-xl text-center mr-2 text-yellow-500">
-            ||
-          </span>
-          <h2 className="text-xl">育休中の就労について</h2>
+      <section className="text-left border-t-2 border-[#1E2678] mt-8">
+        <div className="flex text-xl py-2 mt-8 mb-5">
+          <div className="font-bold text-yellow-500 mr-2">
+            <span>||</span>
+          </div>
+          <h2>育休中の就労について</h2>
         </div>
         <div className="text-sm mt-8">
           <p>
@@ -22,9 +22,11 @@ export const AboutWorkSentence = (): JSX.Element => {
             </b>
             なものでなくてはなりません。
           </p>
-          <p className="mt-4">
-            詳しく知りたい場合はお勤め先の人事やハローワークにてご確認下さい。
-          </p>
+          <div className="mt-4">
+            <p>
+              詳しく知りたい場合はお勤め先の人事やハローワークにてご確認下さい。
+            </p>
+          </div>
           <div className="text-[12px] text-gray-500 mt-2">
             <div className="flex flex-row hover:text-blue-400">
               <Link href="https://we-love.gunma.jp/area/childcareleave-half">

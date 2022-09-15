@@ -26,13 +26,17 @@ export default function Contact() {
   };
 
   return (
-    <>
-      <div className="flex flex-row items-center border-t-2 border-[#39497C] mt-14">
-        <span className="font-bold text-xl mr-2 mt-8 text-yellow-500">||</span>
-        <h2 className="mt-8 text-xl">お問い合わせ</h2>
+    <section>
+      <div className="items-center border-t-2 border-[#39497C]">
+        <div className="flex text-xl py-2 mt-8 mb-3">
+          <div className="font-bold text-yellow-500 mr-2">
+            <span>||</span>
+          </div>
+          <h2>お問い合わせ</h2>
+        </div>
       </div>
-      <form id='contact' onSubmit={handleSubmit(onSubmitForm)}>
-        <div className="text-left mt-5">
+      <form id="contact" onSubmit={handleSubmit(onSubmitForm)}>
+        <div className="text-left mb-3">
           <span className="font-bold text-red-500 text-xs">
             {errors.name && '※名前を入力してください'}
           </span>
@@ -40,12 +44,12 @@ export default function Contact() {
             defaultValue=""
             type="text"
             placeholder="氏名"
-            className="w-full mb-4 px-2 py-2 placeholder-gray-400 border border-gray-300 bg-gray-100 rounded-md"
+            className="w-full px-2 py-1 placeholder-gray-300 border border-gray-400 bg-gray-100 rounded-md"
             {...register('name', { required: true })}
           />
         </div>
 
-        <div className="text-left">
+        <div className="text-left mb-3">
           <div className="text-justify">
             <span className="font-bold text-red-400 text-xs">
               {errors.email && '※メールアドレスを入力してください'}
@@ -55,12 +59,12 @@ export default function Contact() {
             defaultValue=""
             type="email"
             placeholder="メールアドレス"
-            className="w-full mb-4 px-2 py-2 placeholder-gray-400 border border-gray-300 bg-gray-100 rounded-md"
+            className="w-full px-2 py-1 placeholder-gray-300 border border-gray-400 bg-gray-100 rounded-md"
             {...register('email', { required: true })}
           />
         </div>
 
-        <div className="text-left">
+        <div className="text-left mb-3">
           <div className="text-justify">
             <span className="font-bold text-red-400 text-xs">
               {errors.message && '※本文を入力してください'}
@@ -68,20 +72,21 @@ export default function Contact() {
           </div>
           <textarea
             defaultValue=""
-            rows={3}
+            rows={5}
             placeholder="お問い合わせ内容"
-            className="w-full mb-2 px-2 py-2 placeholder-gray-400 border border-gray-300 bg-gray-100 rounded-md"
+            className="w-full px-2 py-1 placeholder-gray-300 border border-gray-400 bg-gray-100 rounded-md"
             {...register('message', { required: true })}
           ></textarea>
-
+        </div>
+        <div className="mb-8">
           <button
             type="submit"
-            className="w-full py-2 font-bold text-white bg-[#1E2678] rounded focus:outline-none mb-10"
+            className="w-full py-2 font-bold text-white bg-[#1E2678] rounded focus:outline-none"
           >
             送信する
           </button>
         </div>
       </form>
-    </>
+    </section>
   );
 }

@@ -4,11 +4,13 @@ import Link from 'next/link';
 export const InitialSentence = (): JSX.Element => {
   return (
     <>
-      <article className="text-sm border-t-2 border-[#1E2678]">
-        <h1 className="text-2xl font-bold text-left mt-12">
-          育休中に働いた場合はどうなるか、自動でシミュレーションします。
-        </h1>
-        <div className="text-left mt-10 border-[#1E2678]">
+      <section className="text-sm border-t-2 border-[#1E2678] text-left">
+        <div className="mt-12 text-2xl font-bold">
+          <h1>
+            育休中に働いた場合はどうなるか、自動でシミュレーションします。
+          </h1>
+        </div>
+        <div className="mt-10 border-[#1E2678]">
           <p>
             労働者が子育てするために休業する場合、育児休業給付金が受け取れます。
           </p>
@@ -20,10 +22,11 @@ export const InitialSentence = (): JSX.Element => {
             。
           </p>
         </div>
-        <div className="mt-8 mb-2 text-left">
-          赤ちゃんが産まれる時にもらえるお金や育児休業給付金をもらう条件など
-          <br />
-          詳しく知りたい方はこちらをご覧ください。
+        <div className="mt-6 mb-2">
+          <p>
+            赤ちゃんが産まれる時にもらえるお金や育児休業給付金をもらう条件など、
+            詳しく知りたい方はこちらをご覧ください。
+          </p>
         </div>
         <div className="text-[12px] text-gray-500">
           <div className="flex flex-row hover:text-blue-400">
@@ -35,7 +38,7 @@ export const InitialSentence = (): JSX.Element => {
             </Link>
           </div>
         </div>
-      </article>
+      </section>
     </>
   );
 };
