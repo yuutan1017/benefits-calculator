@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Link as Scroll } from 'react-scroll';
 
 export const Navbar = () => {
