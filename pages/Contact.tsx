@@ -4,6 +4,7 @@ import axios from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { ContactInputs } from '../types/type';
+import { Loading } from '../components/Loading';
 
 export default function Contact() {
   const {
@@ -15,6 +16,7 @@ export default function Contact() {
   } = useForm<ContactInputs>();
 
   const [open, setOpen] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false);
 
   const onSubmitForm: SubmitHandler<ContactInputs> = async (data) => {
     let config = {
@@ -25,11 +27,15 @@ export default function Contact() {
       },
       data: data,
     };
+    setVisible(true);
     const response = await axios(config);
     if (response) {
       reset();
-      setOpen((open) => !open);
-      setTimeout(() => setOpen((open) => !open), 5000);
+      setOpen(true);
+      setTimeout(() => {
+        setOpen(false);
+        setVisible(false);
+      }, 5000);
     }
   };
 
@@ -45,19 +51,22 @@ export default function Contact() {
         </div>
       ) : (
         <section className="items-center border-t-2 border-[#39497C] mb-10">
-          <div className="flex text-xl py-2 mt-10 mb-3">
+          <div className="flex text-xl py-2 mt-10 ">
             <div className="font-bold text-yellow-500 mr-2">
               <span>||</span>
             </div>
             <h2>お問い合わせ/ご意見</h2>
           </div>
-          <div className="text-left mb-3">
+          <div className="text-left mt-2 mb-4 text-sm">
             <p>
-              ・お問い合わせやご意見につきましては、以下のフォームよりお問い合わせ下さい。
+              お問い合わせやご意見につきましては、以下のフォームよりお問い合わせ下さい。
             </p>
           </div>
+          <div className={`${visible ? 'visible' : 'hidden'}`}>
+            <Loading />
+          </div>
           <form id="contact" onSubmit={handleSubmit(onSubmitForm)}>
-            <div className="text-left mb-3">
+            <div className="text-left mb-3 mt-2">
               <span className="font-bold text-red-500 text-xs">
                 {errors.name && '※名前を入力してください'}
               </span>

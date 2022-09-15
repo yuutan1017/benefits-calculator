@@ -29,7 +29,7 @@ const Main = () => {
   const differencePayment = (comparison: number) => comparison - data.netIncome;
 
   const [visible, setVisible] = useState<boolean>(false);
-  const [upperLimit, setUpperLimit] = useState<boolean>(true);
+  const [upperLimit, setUpperLimit] = useState<boolean>(false);
 
   const calculateDailyWage = () => {
     const eightyPer = (data.grossIncome / 100) * 80;
@@ -40,11 +40,11 @@ const Main = () => {
     if (sixSevenPer >= 305721) {
       sixSevenPer = 305721;
       fiftyPer = 228150;
-      if (upperLimit) setUpperLimit(!upperLimit);
+      setUpperLimit(true);
     } else {
-      if (!upperLimit) setUpperLimit(!upperLimit);
+      setUpperLimit(false);
     }
-    if (!visible) setVisible(!visible);
+    setVisible(true);
     setPayment({
       ...payment,
       sixMonth: sixSevenPer,
@@ -201,6 +201,10 @@ const Main = () => {
               <p>◆就労する場合</p>
             </div>
             {upperLimit ? (
+              <div className="mt-3  text-sm text-left text-red-600 font-bold">
+                <p>※支給額が上限額に達している為、就労できません</p>
+              </div>
+            ) : (
               <table className="bg-gray-200 border-gray-300 text-sm">
                 <thead className="bg-[#1E2678] text-white">
                   <tr>
@@ -238,10 +242,6 @@ const Main = () => {
                   </tr>
                 </tbody>
               </table>
-            ) : (
-              <div className="mt-3  text-sm text-left text-red-600 font-bold">
-                <p>※支給額が上限額に達している為、就労できません</p>
-              </div>
             )}
             <div className="text-[12px] text-gray-500 mt-8 text-left hover:text-blue-400">
               <p>※こちらの計算結果はあくまで概算となりますので、</p>
