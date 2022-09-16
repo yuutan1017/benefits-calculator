@@ -44,7 +44,12 @@ export default function Contact() {
       {open ? (
         <div className="items-center border-t-2 border-[#39497C] mb-10">
           <div className="mt-8 font-bold text-[#13184d]">
-            <Image src="/image/sendMailIcon.jpeg" width={100} height={100} />
+            <Image
+              alt="sendMail"
+              src="/image/sendMailIcon.jpeg"
+              width={100}
+              height={100}
+            />
             <p>お問い合わせありがとうございます</p>
             <p className="text-xl">送信が成功しました</p>
           </div>
