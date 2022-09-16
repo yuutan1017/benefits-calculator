@@ -21,7 +21,7 @@ export default function Contact() {
   const onSubmitForm: SubmitHandler<ContactInputs> = async (data) => {
     let config = {
       method: 'post',
-      url: `${process.env.NEXT_PUBLIC_API_URL}/api/contact`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}api/contact`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -29,14 +29,20 @@ export default function Contact() {
     };
     setVisible(true);
     const response = await axios(config);
-    if (response) {
-      reset();
-      setOpen(true);
-      setTimeout(() => {
-        setOpen(false);
-        setVisible(false);
-      }, 5000);
-    }
+    reset();
+    setOpen(true);
+    setTimeout(() => {
+      setOpen(false);
+      setVisible(false);
+    }, 5000);
+    // if (response) {
+    //   reset();
+    //   setOpen(true);
+    //   setTimeout(() => {
+    //     setOpen(false);
+    //     setVisible(false);
+    //   }, 5000);
+    // }
   };
 
   return (
