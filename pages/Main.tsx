@@ -202,7 +202,7 @@ const Main = () => {
               </tbody>
             </table>
             <div className="mt-6 mb-2 text-left">
-              <p>◆就労する場合</p>
+              <p>◆減額されず就労する場合</p>
             </div>
             {upperLimit ? (
               <div className="mt-3  text-sm text-left text-red-600 font-bold">
@@ -215,11 +215,11 @@ const Main = () => {
                     <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
                       期間
                     </th>
-                    <th className="py-2 border border-gray-500 text-xs">
+                    <th className="py-2 border border-gray-500 text-xs md:w-60 w-28">
                       就労できる日数
                     </th>
                     <th className="py-2 border border-gray-500 text-xs">
-                      減額されず稼げる金額
+                      稼げる金額
                     </th>
                   </tr>
                 </thead>
@@ -247,12 +247,11 @@ const Main = () => {
                 </tbody>
               </table>
             )}
-            <div className="text-[12px] text-gray-500 mt-8 text-left hover:text-blue-400">
-              <p>※こちらの計算結果はあくまで概算となりますので、</p>
+            <div className="text-gray-600 mt-8 text-left">
               <Link href="/AveCalculate">
-                <a>
-                  より正確に計算したい場合は毎月の総支給額の欄を休業開始時賃金日額
-                  × 30日で計算してみて下さい。
+                <a className="hover:border-b-blue-400 hover:border-b-2 hover:text-blue-400">
+                  ※こちらの計算結果はあくまで概算となりますので、
+                  より正確に計算したい場合は毎月の総支給額の欄をこちらで計算してみて下さい。
                 </a>
               </Link>
             </div>
