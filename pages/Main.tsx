@@ -5,34 +5,39 @@ import { Link as Scroll } from 'react-scroll';
 import type { Payment, setChildcareInputs } from '../types/type';
 
 const Main = () => {
+  //総支給、手取り、日当
   const [data, setData] = useState<setChildcareInputs>({
     grossIncome: 300000,
     netIncome: 230000,
-    dailyWage: 8200,
+    dailyWage: 12000,
   });
+  //支給額と月々に稼げる金額
   const [payment, setPayment] = useState<Payment>({
     sixMonth: 0,
     afterSixMonth: 0,
     toSixMakeMoney: 0,
     toAfterSixMakeMoney: 0,
   });
+  //月々の支給額を四捨五入する
   const sixPayment = Math.floor(payment.sixMonth);
   const totalPayment = Math.floor(payment.sixMonth * 6);
   const afterSixPayment = Math.floor(payment.afterSixMonth);
-  const totalYearPayment = Math.floor(
-    payment.sixMonth * 6 + payment.afterSixMonth * 6
-  );
+  const totalYearPayment = Math.floor(totalPayment + afterSixPayment * 6);
+  //月々の稼げる金額を四捨五入する
   const sixMakeMoney = Math.floor(payment.toSixMakeMoney);
   const afterSixMakeMoney = Math.floor(payment.toAfterSixMakeMoney);
+  //一月で就労できる日数を計算して四捨五入する
   const sixWorkingDays = Math.floor(sixMakeMoney / data.dailyWage);
   const afterSixWorkingDays = Math.floor(afterSixMakeMoney / data.dailyWage);
-  const differencePayment = (comparison: number) => comparison - data.netIncome;
-
-  const [visible, setVisible] = useState<boolean>(false);
+  //計算するボタン押したら表示する
+  const [calResultVisible, setCalResultVisible] = useState<boolean>(false);
+  //育児休業給付金が上限を超えたら表示を切り替える
   const [upperLimit, setUpperLimit] = useState<boolean>(false);
+  //数値をカンマ区切りにする
+  const toLocaleString = (arg: number) => arg.toLocaleString();
 
   const calculateDailyWage = () => {
-    const eightyPer = (data.grossIncome / 100) * 80;
+    let eightyPer = (data.grossIncome / 100) * 80;
     let sixSevenPer = (data.grossIncome / 100) * 67;
     let fiftyPer = (data.grossIncome / 100) * 50;
     let toMakeMoneySix = eightyPer - sixSevenPer;
@@ -44,7 +49,7 @@ const Main = () => {
     } else {
       setUpperLimit(false);
     }
-    setVisible(true);
+    setCalResultVisible(true);
     setPayment({
       ...payment,
       sixMonth: sixSevenPer,
@@ -118,7 +123,7 @@ const Main = () => {
           <div id="results"></div>
           <div
             className={`flex flex-col justify-center border-t-2 border-[#1E2678] ${
-              visible ? 'visible' : 'hidden'
+              calResultVisible ? 'visible' : 'hidden'
             }`}
           >
             <div className="mt-10 mb-2 text-left">
@@ -146,12 +151,12 @@ const Main = () => {
                   </th>
                   <th
                     className={`${
-                      differencePayment(payment.sixMonth) < 0
+                      payment.sixMonth - data.netIncome < 0
                         ? 'text-red-600'
                         : ''
                     } py-2 border border-gray-400`}
                   >
-                    {differencePayment(payment.sixMonth).toLocaleString()}円
+                    {toLocaleString(payment.sixMonth - data.netIncome)}円
                   </th>
                 </tr>
                 <tr>
@@ -161,13 +166,12 @@ const Main = () => {
                   </th>
                   <th
                     className={`${
-                      differencePayment(payment.sixMonth) < 0
+                      payment.sixMonth - data.netIncome < 0
                         ? 'text-red-600'
                         : ''
                     } py-2 border border-gray-400`}
                   >
-                    {differencePayment(payment.afterSixMonth).toLocaleString()}
-                    円
+                    {toLocaleString(payment.afterSixMonth - data.netIncome)}円
                   </th>
                 </tr>
               </tbody>

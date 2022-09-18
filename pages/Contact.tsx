@@ -10,7 +10,6 @@ export default function Contact() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
   } = useForm<ContactInputs>();
@@ -34,15 +33,7 @@ export default function Contact() {
     setTimeout(() => {
       setOpen(false);
       setVisible(false);
-    }, 5000);
-    // if (response) {
-    //   reset();
-    //   setOpen(true);
-    //   setTimeout(() => {
-    //     setOpen(false);
-    //     setVisible(false);
-    //   }, 5000);
-    // }
+    }, 6000);
   };
 
   return (
