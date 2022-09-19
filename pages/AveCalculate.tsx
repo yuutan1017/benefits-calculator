@@ -42,8 +42,8 @@ const AveCalculate = () => {
             ※計算内容は、休業開始時賃金日額 × 支給日数(30日) となります
           </p>
         </section>
-        <section className="mt-4 mb-2 bg-gray-300 md:w-96 border-t-2 ">
-          <form className="mt-6 mx-6 pb-3">
+        <section className="mt-4 mb-2 bg-gray-300 md:w-96 w-10/12 border-t-2 ">
+          <form className="mt-6 mx-10 pb-3">
             <table className="w-full">
               <tbody>
                 <tr className="flex flex-col">

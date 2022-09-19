@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/nodemailer": "^6.4.6",
     "@types/react-scroll": "^1.8.4",
     "next": "12.2.5",
     "nodemailer": "^6.7.8",
