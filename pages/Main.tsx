@@ -33,8 +33,6 @@ const Main = () => {
   const [calResultVisible, setCalResultVisible] = useState<boolean>(false);
   //育児休業給付金が上限を超えたら表示を切り替える
   const [upperLimit, setUpperLimit] = useState<boolean>(false);
-  //数値をカンマ区切りにする
-  const toLocaleString = (arg: number) => arg.toLocaleString();
 
   const calculateDailyWage = () => {
     let eightyPer = (data.grossIncome / 100) * 80;
@@ -156,7 +154,7 @@ const Main = () => {
                         : ''
                     } py-2 border border-gray-400`}
                   >
-                    {toLocaleString(payment.sixMonth - data.netIncome)}円
+                    {(payment.sixMonth - data.netIncome).toLocaleString()}円
                   </th>
                 </tr>
                 <tr>
@@ -171,7 +169,8 @@ const Main = () => {
                         : ''
                     } py-2 border border-gray-400`}
                   >
-                    {toLocaleString(payment.afterSixMonth - data.netIncome)}円
+                    {(payment.afterSixMonth - data.netIncome).toLocaleString()}
+                    円
                   </th>
                 </tr>
               </tbody>
@@ -247,7 +246,7 @@ const Main = () => {
                 </tbody>
               </table>
             )}
-            <div className="text-gray-600 mt-8 text-left">
+            <div className="text-gray-600 mt-8 text-left text-sm">
               <Link href="/AveCalculate">
                 <a className="hover:border-b-blue-400 hover:border-b-2 hover:text-blue-400">
                   ※こちらの計算結果はあくまで概算となりますので、
