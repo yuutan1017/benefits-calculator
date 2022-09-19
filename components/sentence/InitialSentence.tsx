@@ -30,7 +30,7 @@ export const InitialSentence = (): JSX.Element => {
         </div>
         <div className="text-[12px] text-gray-500">
           <div className="flex flex-row hover:text-blue-400">
-            <Link href="https://ninps.com/workstyle/work/archives/29">
+            <Link href="https://ninps.com/workstyle/work/archives/29" passHref>
               <a>
                 参考 :
                 育児休業給付金とは？申請・計算方法や延長できるケースまで、どこよりもわかりやすく解説

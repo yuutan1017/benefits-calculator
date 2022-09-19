@@ -104,7 +104,13 @@ const Main = () => {
               />
               <span>円</span>
             </div>
-            <Scroll to="results" duration={500} offset={-10} smooth>
+            <Scroll
+              href="results"
+              to="results"
+              duration={500}
+              offset={-10}
+              smooth
+            >
               <div className="flex flex-row justify-center mt-8">
                 <button
                   type="button"

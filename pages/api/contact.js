@@ -1,6 +1,6 @@
 import { createTransport } from 'nodemailer';
 
-export default (req, res) => {
+export default function sendMail(req, res) {
   const transporter = createTransport({
     service: 'gmail',
     port: 465,
@@ -34,4 +34,4 @@ export default (req, res) => {
     console.log(error || response);
     res.status(200).end();
   });
-};
+}
