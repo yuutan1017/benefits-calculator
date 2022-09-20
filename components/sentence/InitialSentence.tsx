@@ -6,9 +6,9 @@ export const InitialSentence = (): JSX.Element => {
     <>
       <section className="text-sm border-t-2 border-[#1E2678] text-left">
         <div className="mt-12 text-2xl font-bold">
-          <h1>
+          <p>
             育休中に働いた場合はどうなるか、自動でシミュレーションします。
-          </h1>
+          </p>
         </div>
         <div className="mt-10 border-[#1E2678]">
           <p>
