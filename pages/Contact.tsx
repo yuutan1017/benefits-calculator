@@ -52,7 +52,10 @@ export default function Contact() {
           </div>
         </div>
       ) : (
-        <section className="items-center border-t-2 border-[#39497C] mb-10">
+        <section
+          id="contact"
+          className="items-center border-t-2 border-[#39497C] mb-10"
+        >
           <div className="flex text-xl py-2 mt-10 ">
             <div className="font-bold text-yellow-500 mr-2">
               <span>||</span>
@@ -67,7 +70,7 @@ export default function Contact() {
           <div className={`${visible ? 'visible' : 'hidden'}`}>
             <Loading />
           </div>
-          <form id="contact" onSubmit={handleSubmit(onSubmitForm)}>
+          <form method="POST" onSubmit={handleSubmit(onSubmitForm)}>
             <div className="text-left mb-3 mt-2">
               <span className="font-bold text-red-500 text-xs">
                 {errors.name && '※名前を入力してください'}

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const AboutWorkSentence = (): JSX.Element => {
   return (
     <>
-      <section className="text-left border-t-2 border-[#1E2678] mt-8">
+      <section id="aboutWork" className="text-left border-t-2 border-[#1E2678] mt-8">
         <div className="flex text-xl py-2 mt-8 mb-5">
           <div className="font-bold text-yellow-500 mr-2">
             <span>||</span>

@@ -4,7 +4,7 @@ import { Link as Scroll } from 'react-scroll';
 
 import type { Payment, setChildcareInputs } from '../types/type';
 
-const Main = () => {
+const BenefitsCalculate = () => {
   //総支給、手取り、日当
   const [data, setData] = useState<setChildcareInputs>({
     grossIncome: 300000,
@@ -61,7 +61,7 @@ const Main = () => {
     <>
       <section className="flex flex-col">
         <section className="mt-5">
-          <form className="py-5 rounded-lg bg-gray-200 border-2 border-[#39497C]">
+          <form method='POST' className="py-5 rounded-lg bg-gray-200 border-2 border-[#39497C]">
             <p className="text-xs text-blue-800">
               ※設定を変更し計算してみましょう※
             </p>
@@ -92,7 +92,7 @@ const Main = () => {
               <span>円</span>
             </div>
             <div className="flex flex-row justify-center mt-4">
-              <label htmlFor="netIncome">1日あたりの給与</label>
+              <label htmlFor="dailyWage">1日あたりの給与</label>
               <input
                 id="dailyWage"
                 type="number"
@@ -114,7 +114,7 @@ const Main = () => {
               <div className="flex flex-row justify-center mt-8">
                 <button
                   type="button"
-                  className="rounded w-40 bg-[#1E2678] py-1 font-light text-white outline-none"
+                  className="rounded w-40 bg-[#1E2678] py-2 font-light text-white outline-none"
                   onClick={calculateDailyWage}
                 >
                   計算する
@@ -267,4 +267,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default BenefitsCalculate;
