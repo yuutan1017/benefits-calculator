@@ -29,7 +29,7 @@ export const AboutWorkSentence = (): JSX.Element => {
           </div>
           <div className="text-[12px] text-gray-500 mt-2">
             <div className="flex flex-row hover:text-blue-400">
-              <Link href="https://we-love.gunma.jp/area/childcareleave-half" passHref>
+              <Link href="https://we-love.gunma.jp/area/childcareleave-half" prefetch={false} passHref>
                 <a>
                   参考 :
                   半育休の働き方とは？育休中に働く場合の収入や注意点を解説
