@@ -9,7 +9,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang='ja'>
-        <Head />
+        <Head>
+          <meta name='twitter:card' content='summary_large_image'/>
+        </Head>
         <body>
           <Main />
           <NextScript />

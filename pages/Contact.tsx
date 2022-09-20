@@ -43,7 +43,7 @@ export default function Contact() {
           <div className="mt-8 font-bold text-[#13184d]">
             <Image
               alt="sendMail"
-              src="/image/sendMailIcon.jpeg"
+              src="/images/sendMailIcon.jpeg"
               width={100}
               height={100}
             />
