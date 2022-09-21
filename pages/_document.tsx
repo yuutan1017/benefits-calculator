@@ -17,10 +17,19 @@ class MyDocument extends Document {
       <Html lang="ja">
         <Head>
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="2@NYou0611" />
-          <meta name="twitter:title" content="育休中に働いた場合はどうなるか、自動でシミュレーションします" />
-          <meta name="twitter:description" content="主に、給与や給付金などお金のことについてまとめています。" />
-          <meta name="twitter:image" content="https://paternity-leave.vercel.app/images/top.png" />
+          <meta name="twitter:site" content="@NYou0611" />
+          <meta
+            name="twitter:title"
+            content="育休中に働いた場合はどうなるか、自動でシミュレーションします"
+          />
+          <meta
+            name="twitter:description"
+            content="主に、給与や給付金などお金のことについてまとめています。"
+          />
+          <meta
+            name="twitter:image"
+            content="https://paternity-leave.vercel.app/images/top.png"
+          />
         </Head>
         <body>
           <Main />
