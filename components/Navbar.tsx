@@ -27,7 +27,7 @@ export const Navbar = () => {
             就労について
           </Scroll>
         </li>
-        <li className="sm:mr-16 text-[#13184d] sm:text-lg cursor-pointer">
+        <li className="text-[#13184d] sm:text-lg cursor-pointer">
           <Scroll href="contact" to="contact" duration={500} offset={50} smooth>
             お問い合わせ
           </Scroll>
