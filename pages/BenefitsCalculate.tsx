@@ -9,7 +9,7 @@ const BenefitsCalculate = () => {
   const [data, setData] = useState<setChildcareInputs>({
     grossIncome: 300000,
     netIncome: 230000,
-    dailyWage: 12000,
+    dailyWage: 8800,
   });
   //支給額と月々に稼げる金額
   const [payment, setPayment] = useState<Payment>({
@@ -34,13 +34,14 @@ const BenefitsCalculate = () => {
   //育児休業給付金が上限を超えたら表示を切り替える
   const [upperLimit, setUpperLimit] = useState<boolean>(false);
 
+  let eightyPer = (data.grossIncome / 100) * 80;
+  let sixSevenPer = (data.grossIncome / 100) * 67;
+  let fiftyPer = (data.grossIncome / 100) * 50;
+  let toMakeMoneySix = eightyPer - sixSevenPer;
+  let toMakeMoneySixAfter = eightyPer - fiftyPer;
+
   const calculateDailyWage = () => {
-    let eightyPer = (data.grossIncome / 100) * 80;
-    let sixSevenPer = (data.grossIncome / 100) * 67;
-    let fiftyPer = (data.grossIncome / 100) * 50;
-    let toMakeMoneySix = eightyPer - sixSevenPer;
-    let toMakeMoneySixAfter = eightyPer - fiftyPer;
-    if (sixSevenPer >= 305721) {
+    if (sixSevenPer >= 305721 || data.dailyWage === 0) {
       sixSevenPer = 305721;
       fiftyPer = 228150;
       setUpperLimit(true);
@@ -61,7 +62,10 @@ const BenefitsCalculate = () => {
     <>
       <section className="flex flex-col">
         <section className="mt-5">
-          <form method='POST' className="py-5 rounded-lg bg-gray-200 border-2 border-[#39497C]">
+          <form
+            method="POST"
+            className="py-5 rounded-lg bg-gray-200 border-2 border-[#39497C]"
+          >
             <p className="text-xs text-blue-800">
               ※設定を変更し計算してみましょう※
             </p>

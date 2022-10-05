@@ -11,7 +11,7 @@ export const Layout = ({ children }: any): JSX.Element => {
           content="就労した場合の育児休業給付金を自動で計算するツール"
         ></meta>
       </Head>
-      <main className="flex flex-col flex-auto w-screen md:w-8/12 items-center justify-center text-center">
+      <main className="flex flex-col flex-auto md:w-7/12 items-center justify-center text-center">
         {children}
       </main>
       <Footer />
