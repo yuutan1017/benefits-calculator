@@ -185,6 +185,11 @@ const BenefitsCalculate = () => {
                 </tr>
               </tbody>
             </table>
+            <div className="text-gray-600 mt-8 text-left text-xs">
+              ※上限額（６ヵ月まで） 305,329円
+              <br />
+              ※上限額（６ヵ月経過後） 227,850円 となります
+            </div>
             <div className="mt-10 mb-2 text-left">
               <p>◆支給額の合計</p>
             </div>
@@ -256,7 +261,7 @@ const BenefitsCalculate = () => {
                 </tbody>
               </table>
             )}
-            <div className="text-gray-600 mt-8 text-left text-sm">
+            <div className="text-gray-600 mt-8 text-left text-xs">
               <Link href="/AveCalculate">
                 <a className="hover:border-b-blue-400 hover:border-b-2 hover:text-blue-400">
                   ※こちらの計算結果はあくまで概算となりますので、
