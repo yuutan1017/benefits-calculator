@@ -7,7 +7,7 @@ export const Footer = () => {
       <ul className="flex flex-wrap items-center text-sm text-gray-700 sm:mb-0">
         <li className="ml-6">
           <p className="sm:text-lg font-light text-gray-500">
-            copyright@yuutan1017
+            Copyright © {new Date().getFullYear()} Yuta N.
           </p>
         </li>
       </ul>

@@ -153,7 +153,7 @@ const BenefitsCalculate = () => {
               </thead>
               <tbody>
                 <tr>
-                  <th className="py-3 border border-gray-400">６ヶ月まで</th>
+                  <th className="py-3 border border-gray-400">６ヵ月まで</th>
                   <th className="py-2 border border-gray-400">
                     {sixPayment.toLocaleString()}円
                   </th>
@@ -168,7 +168,7 @@ const BenefitsCalculate = () => {
                   </th>
                 </tr>
                 <tr>
-                  <th className="py-3 border border-gray-400">６ヶ月経過後</th>
+                  <th className="py-3 border border-gray-400">６ヵ月以降</th>
                   <th className="py-2 border border-gray-400">
                     {afterSixPayment.toLocaleString()}円
                   </th>
@@ -200,7 +200,7 @@ const BenefitsCalculate = () => {
                     ６ヵ月
                   </th>
                   <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
-                    １２ヶ月
+                    1年
                   </th>
                 </tr>
               </thead>
@@ -239,7 +239,7 @@ const BenefitsCalculate = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <th className="py-3 border border-gray-400">６ヶ月まで</th>
+                    <th className="py-3 border border-gray-400">６ヵ月まで</th>
                     <th className="py-2 border border-gray-400">
                       {sixWorkingDays}日
                     </th>
@@ -248,9 +248,7 @@ const BenefitsCalculate = () => {
                     </th>
                   </tr>
                   <tr>
-                    <th className="py-3 border border-gray-400">
-                      ６ヶ月経過後
-                    </th>
+                    <th className="py-3 border border-gray-400">６ヵ月以降</th>
                     <th className="py-2 border border-gray-400">
                       {afterSixWorkingDays}日
                     </th>

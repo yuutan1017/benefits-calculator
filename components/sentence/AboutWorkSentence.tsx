@@ -43,7 +43,7 @@ export const AboutWorkSentence = (): JSX.Element => {
           <div className="mt-12">
             <p className="font-bold">・月10日以内の就労である</p>
             <p className="font-bold mt-3">
-              ・月10日以上の就労の場合は、1ヶ月の就労時間が80時間以内であること
+              ・月10日以上の就労の場合は、1ヵ月の就労時間が80時間以内であること
             </p>
             <p className="font-bold mt-3">
               ・「週◯回」「毎週◯曜日」など、定期的な就労でないこと
