@@ -233,7 +233,7 @@ const BenefitsCalculate = () => {
                       就労できる日数
                     </th>
                     <th className="py-2 border border-gray-500 text-xs">
-                      稼げる金額
+                      得られる金額
                     </th>
                   </tr>
                 </thead>

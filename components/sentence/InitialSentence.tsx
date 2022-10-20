@@ -31,7 +31,7 @@ export const InitialSentence = (): JSX.Element => {
         <div className="text-[12px] text-gray-500">
           <div className="flex flex-row hover:text-blue-400">
             <Link href="https://ninps.com/workstyle/work/archives/29" prefetch={false} passHref>
-              <a>
+              <a target="_brank">
                 参考 :
                 育児休業給付金とは？申請・計算方法や延長できるケースまで、どこよりもわかりやすく解説
               </a>

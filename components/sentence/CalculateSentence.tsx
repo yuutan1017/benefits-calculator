@@ -38,23 +38,27 @@ export const CalculateSentence = (): JSX.Element => {
 
         <div className="mt-14 mb-8 text-sm">
           <p>◆休業開始直前の6ヵ月で180万円(1ヵ月30万)の賃金を得ていた場合</p>
-          <div className="rounded-lg border-2 border-[#1E2678] p-5 mt-5">
-            <p>➀育児休業開始から180日</p>
-            <p className="ml-4 mt-2">10,000円×30日×0.67</p>
-            <p className="ml-4">
-              →
-              <b className="bg-[#FFF100] inline bg-gradient-to-b from-white ml-1">
-                201,000円支給されます
-              </b>
-            </p>
-            <p className="mt-7">➁育児休業開始から181日以降</p>
-            <p className="ml-4 mt-2">10,000円×30日×0.50</p>
-            <p className="ml-4">
-              →
-              <b className="bg-[#FFF100] inline bg-gradient-to-b from-white ml-1">
-                150,000円支給されます
-              </b>
-            </p>
+          <div className="rounded-lg border-2 border-yellow-500 p-5 mt-5 sm:flex">
+            <div>
+              <p>➀育児休業開始から180日</p>
+              <p className="ml-4 mt-2">10,000円×30日×0.67</p>
+              <p className="ml-4">
+                =
+                <b className="bg-[#FFF100] inline bg-gradient-to-b from-white ml-1">
+                  201,000円支給されます
+                </b>
+              </p>
+            </div>
+            <div className="mt-7 sm:mt-0 sm:ml-6">
+              <p>➁育児休業開始から181日以降</p>
+              <p className="ml-4 mt-2">10,000円×30日×0.50</p>
+              <p className="ml-4">
+                =
+                <b className="bg-[#FFF100] inline bg-gradient-to-b from-white ml-1">
+                  150,000円支給されます
+                </b>
+              </p>
+            </div>
           </div>
         </div>
       </section>
