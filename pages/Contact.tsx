@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { ContactInputs } from '../types/type';
 import { Loading } from '../components/Loading';
+import Link from 'next/link';
 
 export default function Contact() {
   const {
@@ -57,71 +58,30 @@ export default function Contact() {
           className="items-center border-t-2 border-[#39497C] mb-10"
         >
           <div className="flex text-xl py-2 mt-10 ">
-            <div className="font-bold text-yellow-500 mr-2">
-              <span>||</span>
-            </div>
+            <div className="border-b-8 border-yellow-500 rotate-90 w-7"></div>
             <h2>お問い合わせ/ご意見</h2>
           </div>
-          <div className="text-left mt-2 mb-4 text-sm">
-            <p>
-              お問い合わせやご意見につきましては、以下のフォームよりお問い合わせ下さい。
-            </p>
+          <div className="text-left mt-8 mb-4 text-sm hover:text-blue-400">
+            <Link
+              href="https://profile-site-pearl.vercel.app/contact"
+              passHref
+              prefetch={false}
+            >
+              <a target="_blank">
+                お問い合わせやご意見につきましては、こちらのサイトからご連絡お願い致します。
+              </a>
+            </Link>
+            <br />
+            <Link
+              href="https://profile-site-pearl.vercel.app/contact"
+              passHref
+              prefetch={false}
+            >
+              <a target="_blank">
+                https://profile-site-pearl.vercel.app/contact
+              </a>
+            </Link>
           </div>
-          <div className={`${visible ? 'visible' : 'hidden'}`}>
-            <Loading />
-          </div>
-          <form method="POST" onSubmit={handleSubmit(onSubmitForm)}>
-            <div className="text-left mb-3 mt-2">
-              <span className="font-bold text-red-500 text-xs">
-                {errors.name && '※名前を入力してください'}
-              </span>
-              <input
-                defaultValue=""
-                type="text"
-                placeholder="氏名"
-                className="w-full px-2 py-1 placeholder-gray-300 border border-gray-400 bg-gray-100 rounded-md focus:outline-none"
-                {...register('name', { required: true })}
-              />
-            </div>
-
-            <div className="text-left mb-3">
-              <div className="text-justify">
-                <span className="font-bold text-red-400 text-xs">
-                  {errors.email && '※メールアドレスを入力してください'}
-                </span>
-              </div>
-              <input
-                defaultValue=""
-                type="email"
-                placeholder="メールアドレス"
-                className="w-full px-2 py-1 placeholder-gray-300 border border-gray-400 bg-gray-100 rounded-md focus:outline-none"
-                {...register('email', { required: true })}
-              />
-            </div>
-
-            <div className="text-left mb-3">
-              <div className="text-justify">
-                <span className="font-bold text-red-400 text-xs">
-                  {errors.message && '※本文を入力してください'}
-                </span>
-              </div>
-              <textarea
-                defaultValue=""
-                rows={5}
-                placeholder="お問い合わせ内容"
-                className="w-full px-2 py-1 placeholder-gray-300 border border-gray-400 bg-gray-100 rounded-md focus:outline-none"
-                {...register('message', { required: true })}
-              ></textarea>
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="w-full py-2 font-bold text-white bg-[#1E2678] rounded focus:outline-none"
-              >
-                送信する
-              </button>
-            </div>
-          </form>
         </section>
       )}
     </>

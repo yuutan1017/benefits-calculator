@@ -8,9 +8,7 @@ export const CalculateSentence = (): JSX.Element => {
         className="text-left border-t-2 border-[#1E2678] mt-8"
       >
         <div className="flex text-xl py-2 mt-8 mb-5">
-          <div className="font-bold text-yellow-500 mr-2">
-            <span>||</span>
-          </div>
+          <div className="border-b-8 border-yellow-500 rotate-90 w-7"></div>
           <h2>計算方法</h2>
         </div>
         <div className="text-sm">

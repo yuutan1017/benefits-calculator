@@ -4,11 +4,12 @@ import Link from 'next/link';
 export const AboutWorkSentence = (): JSX.Element => {
   return (
     <>
-      <section id="aboutWork" className="text-left border-t-2 border-[#1E2678] mt-8">
+      <section
+        id="aboutWork"
+        className="text-left border-t-2 border-[#1E2678] mt-8"
+      >
         <div className="flex text-xl py-2 mt-8 mb-5">
-          <div className="font-bold text-yellow-500 mr-2">
-            <span>||</span>
-          </div>
+          <div className="border-b-8 border-yellow-500 rotate-90 w-7"></div>
           <h2>育休中の就労について</h2>
         </div>
         <div className="text-sm mt-8">
@@ -29,7 +30,11 @@ export const AboutWorkSentence = (): JSX.Element => {
           </div>
           <div className="text-[12px] text-gray-500 mt-2">
             <div className="flex flex-row hover:text-blue-400">
-              <Link href="https://we-love.gunma.jp/area/childcareleave-half" prefetch={false} passHref>
+              <Link
+                href="https://we-love.gunma.jp/area/childcareleave-half"
+                prefetch={false}
+                passHref
+              >
                 <a>
                   参考 :
                   半育休の働き方とは？育休中に働く場合の収入や注意点を解説
