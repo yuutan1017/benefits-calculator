@@ -20,7 +20,7 @@ const Home: NextPage = () => {
           <div className="border-b-8 border-yellow-500 rotate-90 w-7"></div>
           <h2>まとめ</h2>
         </div>
-        <section>
+        <section className='text-sm'>
           <div>
             育児休業給付金は育児に伴う休業期間中に国から給付金を受け取れるだけでなく、社会保険料の支払いも免除される制度です。
             <br />
