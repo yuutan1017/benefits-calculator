@@ -16,8 +16,8 @@ export interface setChildcareInputs {
 export interface Payment {
   sixMonth: number;
   afterSixMonth: number;
-  toSixMakeMoney: number;
-  toAfterSixMakeMoney: number;
+  sixMonthBenefits: number;
+  afterSixMonthBenefits: number;
 }
 
 export interface ContactInputs {

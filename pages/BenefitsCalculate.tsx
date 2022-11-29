@@ -15,35 +15,36 @@ const BenefitsCalculate = () => {
   const [payment, setPayment] = useState<Payment>({
     sixMonth: 0,
     afterSixMonth: 0,
-    toSixMakeMoney: 0,
-    toAfterSixMakeMoney: 0,
+    sixMonthBenefits: 0,
+    afterSixMonthBenefits: 0,
   });
-  //月々の支給額を四捨五入する
-  const sixPayment = Math.floor(payment.sixMonth);
-  const totalPayment = Math.floor(payment.sixMonth * 6);
-  const afterSixPayment = Math.floor(payment.afterSixMonth);
-  const totalYearPayment = Math.floor(totalPayment + afterSixPayment * 6);
-  //月々の稼げる金額を四捨五入する
-  const sixMakeMoney = Math.floor(payment.toSixMakeMoney);
-  const afterSixMakeMoney = Math.floor(payment.toAfterSixMakeMoney);
-  //一月で就労できる日数を計算して四捨五入する
-  const sixWorkingDays = Math.floor(sixMakeMoney / data.dailyWage);
-  const afterSixWorkingDays = Math.floor(afterSixMakeMoney / data.dailyWage);
+
   //計算するボタン押したら表示する
   const [calResultVisible, setCalResultVisible] = useState<boolean>(false);
   //育児休業給付金が上限を超えたら表示を切り替える
   const [upperLimit, setUpperLimit] = useState<boolean>(false);
 
-  let eightyPer = (data.grossIncome / 100) * 80;
-  let sixSevenPer = (data.grossIncome / 100) * 67;
-  let fiftyPer = (data.grossIncome / 100) * 50;
-  let toMakeMoneySix = eightyPer - sixSevenPer;
-  let toMakeMoneySixAfter = eightyPer - fiftyPer;
+  //月々の支給額を四捨五入する
+  const sixMonthPayment = Math.floor(payment.sixMonth);
+  const afterSixMonthPayment = Math.floor(payment.afterSixMonth);
+  const totalPayment = Math.floor(payment.sixMonth * 6);
+  const totalYearPayment = Math.floor(totalPayment + afterSixMonthPayment * 6);
+
+  //一月で就労できる日数を計算して四捨五入する
+  const sixWorkingDays = Math.floor(payment.sixMonthBenefits / data.dailyWage);
+  const afterSixWorkingDays = Math.floor(
+    payment.afterSixMonthBenefits / data.dailyWage
+  );
+
+  const divide = data.grossIncome / 100;
+  let eighty = divide * 80;
+  let sixSeven = divide * 67;
+  let fifty = divide * 50;
 
   const calculateDailyWage = () => {
-    if (sixSevenPer >= 305721 || data.dailyWage === 0) {
-      sixSevenPer = 305721;
-      fiftyPer = 228150;
+    if (sixSeven >= 305721 || data.dailyWage === 0) {
+      sixSeven = 305721;
+      fifty = 228150;
       setUpperLimit(true);
     } else {
       setUpperLimit(false);
@@ -51,10 +52,10 @@ const BenefitsCalculate = () => {
     setCalResultVisible(true);
     setPayment({
       ...payment,
-      sixMonth: sixSevenPer,
-      afterSixMonth: fiftyPer,
-      toSixMakeMoney: toMakeMoneySix,
-      toAfterSixMakeMoney: toMakeMoneySixAfter,
+      sixMonth: sixSeven,
+      afterSixMonth: fifty,
+      sixMonthBenefits: eighty - sixSeven,
+      afterSixMonthBenefits: eighty - fifty,
     });
   };
 
@@ -155,7 +156,7 @@ const BenefitsCalculate = () => {
                 <tr>
                   <th className="py-3 border border-gray-400">６ヵ月まで</th>
                   <th className="py-2 border border-gray-400">
-                    {sixPayment.toLocaleString()}円
+                    {sixMonthPayment.toLocaleString()}円
                   </th>
                   <th
                     className={`${
@@ -170,7 +171,7 @@ const BenefitsCalculate = () => {
                 <tr>
                   <th className="py-3 border border-gray-400">６ヵ月以降</th>
                   <th className="py-2 border border-gray-400">
-                    {afterSixPayment.toLocaleString()}円
+                    {afterSixMonthPayment.toLocaleString()}円
                   </th>
                   <th
                     className={`${
@@ -244,7 +245,7 @@ const BenefitsCalculate = () => {
                       {sixWorkingDays}日
                     </th>
                     <th className="py-2 border border-gray-400">
-                      {sixMakeMoney.toLocaleString()}円
+                      {Math.floor(payment.sixMonthBenefits).toLocaleString()}円
                     </th>
                   </tr>
                   <tr>
@@ -253,7 +254,7 @@ const BenefitsCalculate = () => {
                       {afterSixWorkingDays}日
                     </th>
                     <th className="py-2 border border-gray-400">
-                      {afterSixMakeMoney.toLocaleString()}円
+                      {payment.afterSixMonthBenefits.toLocaleString()}円
                     </th>
                   </tr>
                 </tbody>
