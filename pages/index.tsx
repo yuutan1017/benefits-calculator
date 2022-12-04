@@ -15,12 +15,12 @@ const Home: NextPage = () => {
       <BenefitsCalculate />
       <CalculateSentence />
       <AboutWorkSentence />
-      <article className="text-left border-t-2 border-[#1E2678] my-8">
+      <section className="text-left border-t-2 border-[#1E2678] my-8">
         <div className="flex text-xl py-2 mt-8 mb-5">
           <div className="border-b-8 border-yellow-500 rotate-90 w-7"></div>
           <h2>まとめ</h2>
         </div>
-        <section className='text-sm'>
+        <div className='text-sm'>
           <div>
             育児休業給付金は育児に伴う休業期間中に国から給付金を受け取れるだけでなく、社会保険料の支払いも免除される制度です。
             <br />
@@ -42,8 +42,8 @@ const Home: NextPage = () => {
               </p>
             </div>
           </div>
-        </section>
-      </article>
+        </div>
+      </section>
       <Contact />
     </div>
   );

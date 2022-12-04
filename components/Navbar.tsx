@@ -10,7 +10,7 @@ export const Navbar = () => {
             href="#methodCalculate"
             to="methodCalculate"
             duration={500}
-            offset={50}
+            offset={30}
             smooth
           >
             計算方法
@@ -21,7 +21,7 @@ export const Navbar = () => {
             href="#aboutWork"
             to="aboutWork"
             duration={500}
-            offset={50}
+            offset={30}
             smooth
           >
             就労について

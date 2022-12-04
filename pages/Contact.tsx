@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 // import axios from 'axios';
 // import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -53,7 +53,7 @@ export default function Contact() {
           </div>
         </div>
       ) : ( */}
-      <section
+      <div
         id="contact"
         className="items-center border-t-2 border-[#39497C] mb-10"
       >
@@ -80,7 +80,7 @@ export default function Contact() {
             <a target="_blank">https://profile-site-pearl.vercel.app/contact</a>
           </Link>
         </div>
-      </section>
+      </div>
       {/* )} */}
     </>
   );

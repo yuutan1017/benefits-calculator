@@ -10,7 +10,6 @@ export interface InputValue {
 export interface setChildcareInputs {
   grossIncome: number;
   netIncome: number;
-  dailyWage: number;
 }
 
 export interface Payment {

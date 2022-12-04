@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 * {
   /* outline: 1px solid magenta; */
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   overflow-x: hidden;
+}
+
+::-webkit-scrollbar{
+  display: none;
 }

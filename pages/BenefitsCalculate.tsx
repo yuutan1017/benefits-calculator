@@ -9,7 +9,6 @@ const BenefitsCalculate = () => {
   const [data, setData] = useState<setChildcareInputs>({
     grossIncome: 300000,
     netIncome: 230000,
-    dailyWage: 8800,
   });
   //支給額と月々に稼げる金額
   const [payment, setPayment] = useState<Payment>({
@@ -30,19 +29,13 @@ const BenefitsCalculate = () => {
   const totalPayment = Math.floor(payment.sixMonth * 6);
   const totalYearPayment = Math.floor(totalPayment + afterSixMonthPayment * 6);
 
-  //一月で就労できる日数を計算して四捨五入する
-  const sixWorkingDays = Math.floor(payment.sixMonthBenefits / data.dailyWage);
-  const afterSixWorkingDays = Math.floor(
-    payment.afterSixMonthBenefits / data.dailyWage
-  );
-
   const divide = data.grossIncome / 100;
   let eighty = divide * 80;
   let sixSeven = divide * 67;
   let fifty = divide * 50;
 
   const calculateDailyWage = () => {
-    if (sixSeven >= 305721 || data.dailyWage === 0) {
+    if (sixSeven >= 305721) {
       sixSeven = 305721;
       fifty = 228150;
       setUpperLimit(true);
@@ -76,7 +69,7 @@ const BenefitsCalculate = () => {
                 id="grossIncome"
                 type="number"
                 defaultValue={data.grossIncome}
-                className="border-b-2 border-gray-400 w-32 pl-2 outline-none mx-1"
+                className="border-b-2 border-gray-400 w-32 pl-3 outline-none mx-1"
                 onChange={(e) => {
                   setData({ ...data, grossIncome: parseInt(e.target.value) });
                 }}
@@ -89,22 +82,9 @@ const BenefitsCalculate = () => {
                 id="netIncome"
                 type="number"
                 defaultValue={data.netIncome}
-                className="border-b-2 border-gray-400 w-32 pl-2 outline-none mx-1"
+                className="border-b-2 border-gray-400 w-32 pl-3 outline-none mx-1"
                 onChange={(e) => {
                   setData({ ...data, netIncome: parseInt(e.target.value) });
-                }}
-              />
-              <span>円</span>
-            </div>
-            <div className="flex flex-row justify-center mt-4">
-              <label htmlFor="dailyWage">1日あたりの給与</label>
-              <input
-                id="dailyWage"
-                type="number"
-                defaultValue={data.dailyWage}
-                className="border-b-2 border-gray-400 w-32 pl-2 outline-none mx-1"
-                onChange={(e) => {
-                  setData({ ...data, dailyWage: parseInt(e.target.value) });
                 }}
               />
               <span>円</span>
@@ -155,34 +135,34 @@ const BenefitsCalculate = () => {
               <tbody>
                 <tr>
                   <th className="py-3 border border-gray-400">６ヵ月まで</th>
-                  <th className="py-2 border border-gray-400">
+                  <td className="py-2 border border-gray-400 font-bold">
                     {sixMonthPayment.toLocaleString()}円
-                  </th>
-                  <th
+                  </td>
+                  <td
                     className={`${
                       payment.sixMonth - data.netIncome < 0
                         ? 'text-red-600'
                         : ''
-                    } py-2 border border-gray-400`}
+                    } py-2 border border-gray-400 font-bold`}
                   >
                     {(payment.sixMonth - data.netIncome).toLocaleString()}円
-                  </th>
+                  </td>
                 </tr>
                 <tr>
                   <th className="py-3 border border-gray-400">６ヵ月以降</th>
-                  <th className="py-2 border border-gray-400">
+                  <td className="py-2 border border-gray-400 font-bold">
                     {afterSixMonthPayment.toLocaleString()}円
-                  </th>
-                  <th
+                  </td>
+                  <td
                     className={`${
                       payment.sixMonth - data.netIncome < 0
                         ? 'text-red-600'
                         : ''
-                    } py-2 border border-gray-400`}
+                    } py-2 border border-gray-400 font-bold`}
                   >
                     {(payment.afterSixMonth - data.netIncome).toLocaleString()}
                     円
-                  </th>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -207,12 +187,12 @@ const BenefitsCalculate = () => {
               </thead>
               <tbody>
                 <tr>
-                  <th className="py-4 border border-gray-400">
+                  <td className="py-4 border border-gray-400 font-bold">
                     {totalPayment.toLocaleString()}円
-                  </th>
-                  <th className="py-4 border border-gray-400">
+                  </td>
+                  <td className="py-4 border border-gray-400 font-bold">
                     {totalYearPayment.toLocaleString()}円
-                  </th>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -230,39 +210,30 @@ const BenefitsCalculate = () => {
                     <th className="md:w-40 w-24 py-2 border border-gray-500 text-xs">
                       期間
                     </th>
-                    <th className="py-2 border border-gray-500 text-xs md:w-60 w-28">
-                      就労できる日数
-                    </th>
                     <th className="py-2 border border-gray-500 text-xs">
-                      得られる金額
+                      月々に得られる金額
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th className="py-3 border border-gray-400">６ヵ月まで</th>
-                    <th className="py-2 border border-gray-400">
-                      {sixWorkingDays}日
-                    </th>
-                    <th className="py-2 border border-gray-400">
+                    <td className="py-2 border border-gray-400 font-bold">
                       {Math.floor(payment.sixMonthBenefits).toLocaleString()}円
-                    </th>
+                    </td>
                   </tr>
                   <tr>
                     <th className="py-3 border border-gray-400">６ヵ月以降</th>
-                    <th className="py-2 border border-gray-400">
-                      {afterSixWorkingDays}日
-                    </th>
-                    <th className="py-2 border border-gray-400">
+                    <td className="py-2 border border-gray-400 font-bold">
                       {payment.afterSixMonthBenefits.toLocaleString()}円
-                    </th>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             )}
             <div className="text-gray-600 mt-8 text-left text-xs">
               <Link href="/AveCalculate">
-                <a className="hover:border-b-blue-400 hover:border-b-2 hover:text-blue-400">
+                <a className="hover:text-blue-400">
                   ※こちらの計算結果はあくまで概算となりますので、
                   より正確に計算したい場合は毎月の総支給額の欄をこちらで計算してみて下さい。
                 </a>
