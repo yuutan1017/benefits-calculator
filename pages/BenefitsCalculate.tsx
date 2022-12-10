@@ -29,10 +29,10 @@ const BenefitsCalculate = () => {
   const totalPayment = Math.floor(payment.sixMonth * 6);
   const totalYearPayment = Math.floor(totalPayment + afterSixMonthPayment * 6);
 
-  const divide = data.grossIncome / 100;
-  let eighty = divide * 80;
-  let sixSeven = divide * 67;
-  let fifty = divide * 50;
+  const base = data.grossIncome / 100;
+  let eighty = base * 80;
+  let sixSeven = base * 67;
+  let fifty = base * 50;
 
   const calculateDailyWage = () => {
     if (sixSeven >= 305721) {
@@ -69,7 +69,7 @@ const BenefitsCalculate = () => {
                 id="grossIncome"
                 type="number"
                 defaultValue={data.grossIncome}
-                className="border-b-2 border-gray-400 w-32 pl-3 outline-none mx-1"
+                className="border-b-2 border-gray-400 w-32 pl-2 outline-none mx-1"
                 onChange={(e) => {
                   setData({ ...data, grossIncome: parseInt(e.target.value) });
                 }}
@@ -82,7 +82,7 @@ const BenefitsCalculate = () => {
                 id="netIncome"
                 type="number"
                 defaultValue={data.netIncome}
-                className="border-b-2 border-gray-400 w-32 pl-3 outline-none mx-1"
+                className="border-b-2 border-gray-400 w-32 pl-2 outline-none mx-1"
                 onChange={(e) => {
                   setData({ ...data, netIncome: parseInt(e.target.value) });
                 }}
